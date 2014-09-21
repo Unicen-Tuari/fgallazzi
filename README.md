@@ -17,9 +17,14 @@ fgallazzi
 * Categorias
 * Compras
 
- > Carrito de compras
- > Comentarios en productos (Opcional)
- > Registrarse
- > Login
- > Carrito de Compras (Comprar, mande mail al usuario que compra, al usuario que vende y lo grabe en la base)
- > Contacto (mandar mail)
+> Carrito de compras
+
+> Comentarios en productos (Opcional)
+
+> Registrarse
+
+> Login
+
+> Carrito de Compras (Comprar, mande mail al usuario que compra, al usuario que vende y lo grabe en la base)
+
+> Contacto (mandar mail)
