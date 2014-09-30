@@ -12,7 +12,7 @@
 		function __construct($pathUser=false)
 		{
 			parent::__construct($pathUser);
-			$this->setDir("./templates/home/");
+			$this->addDir("./templates/home/");
 		}
 
 		private $homeTpl = "home.tpl";

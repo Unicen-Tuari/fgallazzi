@@ -16,7 +16,7 @@
 		{
 			$this->templateEng = new Smarty();
 			$this->set("pathUser",$pathUser);
-
+			$this->addDir("./templates/layouts");
 		}
 
 		/**
@@ -36,11 +36,10 @@
 
 		}
 
-		protected function setDir($path){
-			$this->templateEng->setTemplateDir(array(
-								    'one' => './templates/layouts',
-								    'two' => $path
-								));
+		protected function addDir($path){
+			$d = $this->templateEng->getTemplateDir();
+			$d[] = $path;
+			$this->templateEng->setTemplateDir($d);
 		}
 		
 	}
