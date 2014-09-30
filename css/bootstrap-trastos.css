@@ -1,0 +1,56 @@
+/*--------------------------------------------------------------*/
+/** jumbotron **/
+
+.jumbotron-trastos {
+	background-image: url('../img/tweed.png');
+	background-repeat: repeat;
+	color : white;
+}
+
+.portada-img {
+	max-height: 200px;
+	width : 500px;
+	box-shadow: 0px 0px 5px 0px black;
+}
+
+/*--------------------------------------------------------------*/
+
+/** Nav-bar **/
+
+.navbar-trastos {
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
+
+.img-trastos {
+	height: 50px;
+	margin-left: 20px;
+}
+
+
+/*--------------------------------------------------------------*/
+/** Listado de productos */
+.img-producto {
+	max-width: 120px;
+}
+
+/*--------------------------------------------------------------*/
+/** Menu Bar */
+li.active-menu-bar {
+	background-color: rgb(232, 229, 250);
+}
+
+li.active-menu-bar > a {
+	color: #fff;
+  	background-color: #428bca;
+  	border-bottom-left-radius: 0px;
+  	border-bottom-right-radius: 0px;
+}
+
+
+/*--------------------------------------------------------------*/
+/* General */
+.hidden {
+	display : none;
+}
+
