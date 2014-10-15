@@ -94,7 +94,7 @@
 		}
 
 		
-		private function getPage($cant_paginas=5,$cant_elementos = 5, $idCategoria){
+		private function getPage($cant_paginas,$cant_elementos,$idCategoria){
 
 			$nPaginas = $this->countPage($cant_elementos,$idCategoria);
 
