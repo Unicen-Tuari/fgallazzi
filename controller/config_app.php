@@ -16,6 +16,7 @@
 		public static $ACTION            = 'action';
 		public static $ACTION_HOME       = 'home';
 		public static $ACTION_PRODUCTOS  = 'productos';
+		public static $ACTION_DETALLE    = 'detalle';
 
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA      = "categoria";

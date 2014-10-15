@@ -54,3 +54,61 @@ li.active-menu-bar > a {
 	display : none;
 }
 
+
+/*--------------------------------------------------------------*/
+/*Listado de productos*/
+.txt-nombre-producto{
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.txt-nombre-producto > span{
+	font-size: 16px;
+}
+.row-trastos{
+	border-bottom : 1px solid rgb(240, 240, 240);
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+.row-trastos:hover{
+	background-color: rgb(247, 247, 247);
+
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px 0px gray;
+}
+
+.info-extra-producto {
+	display : block;
+	font-size: 12px;
+	padding-top: 10px;
+	text-align: right;
+}
+
+.info-precio-producto{
+	font-size: 16px;
+}
+
+.row-paginador-trastos{
+	padding-bottom: 20px;
+}
+
+.pagination-trastos{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+/* Footer ----------------------------------*/
+
+.footer-trastos{
+	bottom: 0;
+	width: 100%;
+	min-height: 60px;
+	background-image: url('../img/tweed.png');
+	background-repeat: repeat;
+	color : white;
+}
+

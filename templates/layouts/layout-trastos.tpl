@@ -18,6 +18,7 @@
 
 	{block name=body}{/block}
 
+	{block name=footer}{/block}
 
 	<!-- Libreria JQuery -->
 	<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>

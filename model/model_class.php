@@ -1,8 +1,10 @@
 <?php 
+	
+
 	/**
 	* Clase Padre Model
 	*/
-	class Model 
+	abstract class Model 
 	{
 		/**
 		 * Contructor
@@ -11,6 +13,7 @@
 		{
 			
 		}
+		abstract function getTabla();
 
 		/**
 		 * Atributos
@@ -61,7 +64,8 @@
             if (!$param){
 				$q = $conn->query($sql);
 			} else if ($param) {
-				$q = $conn->prepare($sql);
+				$q = $conn->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+				
 				$q->execute($param);
 			}
 			if(!$q){

@@ -23,6 +23,7 @@
 		 * */
 		
 		public function home($allCategorias){
+			$this->set("title","Home : Trastos");
 			$this->set("allCategorias",$allCategorias);
 			$this->render($this->homeTpl);
 		}

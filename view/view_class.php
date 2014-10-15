@@ -31,6 +31,13 @@
 
 		}
 
+		protected function setParams($params){
+			foreach ($params as $key => $value){
+				$this->set($key,$value);
+			}
+
+		}
+
 		protected function render($file){
 			$this->templateEng->display($file);
 

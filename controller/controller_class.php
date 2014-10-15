@@ -76,6 +76,7 @@
 					case false : 
 					case ConfigApp::$ACTION_HOME:
 					case ConfigApp::$ACTION_PRODUCTOS:
+					case ConfigApp::$ACTION_DETALLE:
 						return true;
 						break;
 					default:
@@ -95,6 +96,9 @@
 				$this->pathUser = ConfigApp::$PATH_USER_NO_LOGUEADO;
 			}
 		}
+
+
+		
 	}
 
  ?>

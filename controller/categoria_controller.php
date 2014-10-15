@@ -45,6 +45,26 @@
 		}
 
 		/**
+		 * dada una categoria devuelve su categoria padre y hermanos;
+		 * */
+		public function getByCategoria($id_categoria){
+			$data = $this->model->getCategoriaPadreByCategoria($id_categoria);
+			$menu = array();
+			foreach ($data as $dato) {
+				$menu[$dato["id_categoria"]]["categoria"] = $dato["v_descripcion"];
+				$menu[$dato["id_categoria"]]["sub_categorias"] = array();
+				$subCategorias =  $this->model->loadByCategoriaPadre($dato["id_categoria"]);
+				foreach ($subCategorias as $sc) {
+					$menu[$dato["id_categoria"]]["sub_categorias"][] = array(
+							'id' => $sc["id_categoria"],
+							'vDescripcion' => $sc["v_descripcion"]
+						);
+				}
+			}
+			return $menu;
+		}
+
+		/**
 		 * Verifica si esxiste la id pasada por parametro
 		 * @param $id
 		 * @return boolean 
