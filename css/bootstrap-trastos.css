@@ -112,3 +112,43 @@ li.active-menu-bar > a {
 	color : white;
 }
 
+/*Detalle Producto -------------------------*/
+
+.panel-detalle-producto{
+	background-color: rgb(247, 247, 247);
+	padding: 20px;
+}
+
+.info-extra-detalle-producto{
+	margin-top: 20px;
+}
+
+.info-extra-detalle-producto p {
+	font-size: 12px;
+	margin : 0px;
+}
+
+table .col-1 {
+	width: 25%;
+}
+
+table .col-2 {
+	width: 75%;
+}
+
+.btn-comprar {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.row-detalle-producto{
+	width: 50%;
+	border-top : 1px solid #eee;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.table-detalle-producto-vendedor tbody tr td{
+	border : 0px;
+
+}

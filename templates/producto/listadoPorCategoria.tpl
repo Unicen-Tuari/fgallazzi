@@ -39,7 +39,7 @@
 							<div class="row">
 								<div class="col-sm-8 col-md-9">
 									<h3 class="txt-nombre-producto">
-										<a href="index.php?{$ACTION}={$ACTION_DETALLE}&id={$p.id_producto}">
+										<a href="index.php?{$ACTION}={$ACTION_DETALLE}&{$ID_PRODUCTO}={$p.id_producto}">
 											{$p.v_nombre}	
 										</a>
 									</h3>

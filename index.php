@@ -1,4 +1,5 @@
 <?php 
+	sleep(1);
 	/**
 	 * Enrutador de peticiones
 	 * Segun el pedido, instanciara su correspondiente Controlador.

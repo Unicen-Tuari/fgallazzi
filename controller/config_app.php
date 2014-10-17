@@ -20,6 +20,7 @@
 
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA      = "categoria";
+		public static $ID_PRODUCTO       = "product";
 
 		/* Clasificación de carpetas para los distintos usuarios */
 		public static $PATH_USER_ADMIN       = "/rol/user-admin";

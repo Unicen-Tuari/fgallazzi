@@ -30,6 +30,8 @@
 		private $view;
 		private $model;
 
+		// PUBLIC FUNCTIONS //
+
 		/**
 		 * visualizara un listado de productos dado por la categoria
 		 * */
@@ -90,10 +92,27 @@
 		}
 
 		public function detalleProducto(){
-			echo "detalle del producto";
+			$id_producto = $this->getDataRequest(ConfigApp::$ID_PRODUCTO);
+			if (!$this->model->verificarId($id_producto)){
+				echo "producto inexistente";
+				exit();
+			}
+			$data = $this->model->getById($id_producto);
+			$caracteristicas = $this->model->getCaracteristicasByProducto($id_producto);
+			$data = $data[0];
+			if (count($caracteristicas) > 0){
+				$caracteristicas[] = array('v_nombre' => "Precio",
+										   'v_valor' => "$".$data['f_precio']);
+			}
+			
+			$params = array(
+				'data' => $data,
+				'caracteristicas' => $caracteristicas
+				);
+			$this->view->detalleProducto($params);
 		}
 
-		
+		//PRIVATE FUNCTIONS //
 		private function getPage($cant_paginas,$cant_elementos,$idCategoria){
 
 			$nPaginas = $this->countPage($cant_elementos,$idCategoria);

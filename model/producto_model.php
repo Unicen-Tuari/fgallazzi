@@ -13,6 +13,13 @@
 
 		private $sql_count = "SELECT count(1) as count from producto where id_categoria=:id_categoria";
 
+		private $sql_validarId = "SELECT count(1) as count from producto where id_producto=:id_producto";
+
+		private $sql_getById = "SELECT * from view_producto where id_producto=:id_producto";
+
+		private $sql_getCaracteristicasByProducto   = "SELECT cxp.v_valor, c.v_nombre from caracteristica_x_producto cxp
+															JOIN caracteristica c ON c.id_caracteristica = cxp.id_caracteristica
+															WHERE id_producto = :id_producto ";
 		public function getTabla(){
 			return $this->tabla;
 		}
@@ -36,6 +43,22 @@
 			$param = array(':id_categoria'=>$id);
 			$count = $this->query($this->sql_count,$param);
 			return isset($count[0]['count']) ? $count[0]['count'] : 0;
+		}
+
+		public function verificarId($id){
+			$param = array(':id_producto'=>$id);
+			$count = $this->query($this->sql_validarId,$param);
+			return (isset($count[0]['count']) && $count[0]['count'] > 0) ? true : false;
+		}
+
+		public function getById($id){
+			$param = array(':id_producto'=>$id);
+			return $this->query($this->sql_getById,$param);
+		}
+
+		public function getCaracteristicasByProducto($id){
+			$param = array(':id_producto'=>$id);
+			return $this->query($this->sql_getCaracteristicasByProducto,$param);
 		}
 	}
 

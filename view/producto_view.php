@@ -16,10 +16,13 @@
 			$this->addDir("./templates/producto/");
 			$this->set("ACTION",ConfigApp::$ACTION);
 			$this->set("ACTION_DETALLE",ConfigApp::$ACTION_DETALLE);
+			$this->set("ID_PRODUCTO",ConfigApp::$ID_PRODUCTO);
 		}
 
 		private $listadoPorCategoriaTpl = "listadoPorCategoria.tpl";
 		private $listadoVacioTpl = "listadoVacio.tpl";
+		private $detalleProductoTpl = "detalleProducto.tpl";
+
 		/**
 		 * metodo listadoPorCategoria
 		 * Visualizara un listado de los productos indicado por la id de categoria
@@ -38,6 +41,11 @@
 		public function listadoVacio($params){
 			$this->setParams($params);
 			$this->render($this->listadoVacioTpl);
+		}
+
+		public function detalleProducto($params){
+			$this->setParams($params);
+			$this->render($this->detalleProductoTpl);
 		}
 	}
 
