@@ -13,6 +13,7 @@
 	include_once "controller/producto_controller.php";
 	include_once "controller/categoria_controller.php";
 	include_once "controller/caracteristica_controller.php";
+	include_once "controller/carrito_controller.php";
 
 	
 	if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST ) || $_REQUEST[ConfigApp::$ACTION] == ConfigApp::$ACTION_HOME){
@@ -53,6 +54,10 @@
 			case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
 				$productoController = new ProductoController();
 				$productoController->getAllProductosByAjax();
+				break;
+			case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
+				$carritoController = new CarritoController();
+				$carritoController->carritoCompraByAjax();
 				break;
 			default:
 				echo "Pagina no encontrada";

@@ -83,6 +83,7 @@
 					case ConfigApp::$ACTION_GET_CARACTERISTICAS:
 					case ConfigApp::$ACTION_BUSCADOR:
 					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
+					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
 						return true;
 						break;
 					default:

@@ -28,6 +28,7 @@
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="index.php?action=publicar" name="publicar">Publicar</a></li>
+			<li ><a  id = "#carrito_compra" onclick="miCarrito_onclick();">Mi Carrito</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">M&iacute; cuenta <b class="caret"></b></a>
 				<ul class="dropdown-menu">

@@ -2,6 +2,8 @@ $(document).ready(function() {
 
 	marcarActiveMenu(location.href);
 
+	// carrito de compra
+	$('body').append('<div id = "content-carrito-compra" class = "hidden"> </div>');
 });	
 
 
@@ -23,4 +25,23 @@ function marcarActiveMenu(url){
 	}else{
 		$('#navbar-trastos li').find("a[href*='home']").parent('li').addClass('active');
 	}
+}
+
+function miCarrito_onclick(){
+	$('#content-carrito-compra').empty();
+		var that = this;
+		$.ajax({
+			url: 'index.php',
+			type: 'POST',
+			dataType: 'html',
+			data: {action: 'carrito_compra_by_ajax'},
+			success : function(data){
+				$('#content-carrito-compra').html(data).removeClass('hidden');
+				$('#modal-carrito').modal('show');
+				$('#modal-carrito').on('hidden.bs.modal', function (e) {
+					$('#content-carrito-compra').addClass('hidden');
+				})
+
+			}
+		});
 }
