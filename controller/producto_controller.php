@@ -112,6 +112,50 @@
 			$this->view->detalleProducto($params);
 		}
 
+		public function publicarProducto(){
+			$this->view->publicarProducto();
+		}
+
+		public function cargarPublicacion(){
+			try{
+				if (!$info = $this->getDataRequest('info')){
+					throw new Exception("Error Processing Request", 1);
+				}
+
+				$caracteristicas = $this->getDataRequest('caracteristicas');
+				
+				$imagenes = $this->getDataRequest('imagenes');
+
+				$nombreFile = uniqid('img_prod');
+				
+				$dataInfo = array(
+					'v_nombre' => $info['nombre'], 
+					'v_descripcion' => $info['descripcion'],
+					'f_precio' => $info['precio'],
+					'v_img_path' => 'img/'. $nombreFile,
+					'id_categoria' => $info['sub_categoria'],
+					'id_usuario' => 1);
+
+				$idProducto = $this->model->add($dataInfo);
+
+				if ($idProducto) {
+					move_uploaded_file($_FILES['imagenes']['tmp_name']['file_1'], 'img/'.$nombreFile);
+					if (is_array($caracteristicas)){
+						foreach ($caracteristicas AS $id_caracteristica => $value){
+							$dataCXP = array('id_producto' => $idProducto, 
+										  	 'id_caracteristica' => $id_caracteristica, 
+										     'v_valor' => $value);
+							$this->model->addCaracteristicaXProducto($dataCXP);
+						}
+					}
+			    }
+		    }catch (Exception $ex)
+		    {
+		    	return $this->view->success(false);
+		    }
+		    return $this->view->success(true);
+		}
+
 		//PRIVATE FUNCTIONS //
 		private function getPage($cant_paginas,$cant_elementos,$idCategoria){
 

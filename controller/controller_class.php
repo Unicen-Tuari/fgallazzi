@@ -77,6 +77,10 @@
 					case ConfigApp::$ACTION_HOME:
 					case ConfigApp::$ACTION_PRODUCTOS:
 					case ConfigApp::$ACTION_DETALLE:
+					case ConfigApp::$ACTION_PUBLICAR:
+					case ConfigApp::$ACTION_GET_CATEGORIAS:
+					case ConfigApp::$ACTION_CARGAR_PUBLICACION:
+					case ConfigApp::$ACTION_GET_CARACTERISTICAS:
 						return true;
 						break;
 					default:

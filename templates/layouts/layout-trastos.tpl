@@ -25,6 +25,8 @@
 	
 	<!-- Libreria Bootstrap -->
 	<script type="text/javascript" src = "js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src = "js/trastos.js"></script>	
 	
 	{block name=scriptJS}{/block}
 

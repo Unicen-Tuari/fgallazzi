@@ -20,6 +20,13 @@
 		private $sql_getCaracteristicasByProducto   = "SELECT cxp.v_valor, c.v_nombre from caracteristica_x_producto cxp
 															JOIN caracteristica c ON c.id_caracteristica = cxp.id_caracteristica
 															WHERE id_producto = :id_producto ";
+
+		private $sql_insert = " INSERT INTO producto (v_nombre,v_descripcion, f_precio, v_img_path, id_categoria, id_usuario) 
+							    VALUES (:v_nombre, :v_descripcion, :f_precio, :v_img_path, :id_categoria, :id_usuario) ";
+
+		private $sql_insertCaracteriscaXProducto =  "INSERT INTO caracteristica_x_producto (id_producto,id_caracteristica,v_valor) 
+													   VALUES (:id_producto, :id_caracteristica, :v_valor) ";
+
 		public function getTabla(){
 			return $this->tabla;
 		}
@@ -59,6 +66,24 @@
 		public function getCaracteristicasByProducto($id){
 			$param = array(':id_producto'=>$id);
 			return $this->query($this->sql_getCaracteristicasByProducto,$param);
+		}
+
+		public function add($data){
+			$param = array(':v_nombre' => $data['v_nombre'], 
+						   ':v_descripcion' => $data['v_descripcion'],
+						   ':f_precio' => $data['f_precio'],
+						   ':v_img_path' => $data['v_img_path'],
+						   ':id_categoria' => $data['id_categoria'],
+						   ':id_usuario' => $data['id_usuario']);
+
+			return $this->insert($this->sql_insert,$param);
+		}
+
+		public function addCaracteristicaXProducto($data){
+			$param = array(':id_producto' => $data['id_producto'], 
+				           ':id_caracteristica' => $data['id_caracteristica'],
+				           ':v_valor' => $data['v_valor']);
+			return $this->insert($this->sql_insertCaracteriscaXProducto,$param);
 		}
 	}
 

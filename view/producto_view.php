@@ -17,11 +17,13 @@
 			$this->set("ACTION",ConfigApp::$ACTION);
 			$this->set("ACTION_DETALLE",ConfigApp::$ACTION_DETALLE);
 			$this->set("ID_PRODUCTO",ConfigApp::$ID_PRODUCTO);
+			$this->set("ACTION_CARGAR_PUBLICACION",ConfigApp::$ACTION_CARGAR_PUBLICACION);
 		}
 
 		private $listadoPorCategoriaTpl = "listadoPorCategoria.tpl";
 		private $listadoVacioTpl = "listadoVacio.tpl";
 		private $detalleProductoTpl = "detalleProducto.tpl";
+		private $publicarProductoTpl = "publicarProducto.tpl";
 
 		/**
 		 * metodo listadoPorCategoria
@@ -46,6 +48,10 @@
 		public function detalleProducto($params){
 			$this->setParams($params);
 			$this->render($this->detalleProductoTpl);
+		}
+
+		public function publicarProducto(){
+			$this->render($this->publicarProductoTpl);
 		}
 	}
 

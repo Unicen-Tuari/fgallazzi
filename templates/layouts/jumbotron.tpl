@@ -4,7 +4,7 @@
   		<div class = "col-sm-6">
   			<h1>Trastos.com</h1>
     	<p>Vender...    Comprar... y volver a vender!!!</p>
-	    <p><a class="btn btn-primary btn-lg" role="button">Publicar</a></p>
+	    <p><a class="btn btn-primary btn-lg" role="button" href="index.php?{$ACTION}={$ACTION_PUBLICAR}">Publicar</a></p>
   			
   		</div>
   		<div class = "hidden-xs col-sm-6">

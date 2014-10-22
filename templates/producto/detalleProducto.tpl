@@ -3,7 +3,7 @@
 {extends file="layout-trastos.tpl"}
 
 {block name=scriptJS}
-
+	<script type="text/javascript" src="js/detalle_producto.js" ></script>
 {/block}
 
 {block name=body}
@@ -89,6 +89,8 @@
 					</tr>
 				</tbody>
 			</table>
+			{include file = "carrusel.tpl"}
+
 		</div>
 	</div>
 	

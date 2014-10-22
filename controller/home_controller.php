@@ -18,7 +18,7 @@
 			parent::__construct();
 			$this->model = null;
 			$this->view = new HomeView($this->pathUser);
-
+			
 		}
 
 		/**

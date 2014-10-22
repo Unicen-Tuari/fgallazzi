@@ -74,6 +74,25 @@
 			return $q->fetchAll();
 		}
 
+		function insert($sql, $param = false){
+			$conn = $this->conectar();
+			//Ejecucion
+			if (!$param){
+				$q	 = $conn->query($sql);
+			} else if ($param) {
+				$q = $conn->prepare($sql);
+				$q->execute($param);
+				 
+			}
+			//Si es null, hubo un error
+			if(!$q)
+			{
+			  die("Error al ejecutar una consulta, Mensaje: ". $conn->errorInfo());
+			}
+			/* Si fue exitoso retorna el ID */
+			return $conn->lastInsertId();
+		}
+
 		/**
 		 * TODO 
 		 * Tratar las excepciones

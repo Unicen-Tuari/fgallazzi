@@ -48,7 +48,16 @@
 			$d[] = $path;
 			$this->templateEng->setTemplateDir($d);
 		}
+
+		public function json($data){
+			echo json_encode($data);
+			exit();
+		}
 		
+		public function success($success){
+			$json = ($success) ? array ('success' => true) : array ('success' => false);
+			$this->json($json);
+		}
 	}
 
  ?>

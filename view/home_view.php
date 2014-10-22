@@ -13,6 +13,9 @@
 		{
 			parent::__construct($pathUser);
 			$this->addDir("./templates/home/");
+			$this->set("ACTION",ConfigApp::$ACTION);
+			$this->set("ACTION_PUBLICAR",ConfigApp::$ACTION_PUBLICAR);
+
 		}
 
 		private $homeTpl = "home.tpl";

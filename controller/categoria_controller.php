@@ -1,6 +1,7 @@
 <?php 
 	include_once "controller_class.php";
 	include_once "model/categoria_model.php";
+	include_once "view/categoria_view.php";
 
 	/**
 	 * HomeController
@@ -15,9 +16,11 @@
 		{
 			parent::__construct();
 			$this->model = new categoriaModel();
+			$this->view  = new CategoriaView();
 		}
 
 		private $model;
+		private $view;
 
 		/**
 		 * metodo getCategorias
@@ -62,6 +65,27 @@
 				}
 			}
 			return $menu;
+		}
+
+		public function getCategoriasEnComboByAjax(){
+			$id_categoria = $this->getDataRequest(ConfigApp::$ID_CATEGORIA);
+			$data = array();
+			if ($id_categoria){
+				// Devolver subcategorias
+				$data = $this->model->loadByCategoriaPadre($id_categoria);
+
+			} else {
+				// Devolver categorias principales
+				$data = $this->model->loadCategoriasPadre();
+
+			}
+			$categoriasEnCombo = array();
+			for ($i = 0 ; $i < count($data); $i++){
+				$categoriasEnCombo[] = array ('value' => $data[$i]['id_categoria'],
+											  'text'  => $data[$i]['v_descripcion']);
+			}
+			$this->view->json($categoriasEnCombo);
+
 		}
 
 		/**
