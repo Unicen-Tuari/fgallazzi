@@ -21,10 +21,14 @@
 		public static $ACTION_CARGAR_PUBLICACION = "cargar_publicacion";
 		public static $ACTION_GET_CATEGORIAS = "get_categorias";
 		public static $ACTION_GET_CARACTERISTICAS = "get_caracteristicas";
+		public static $ACTION_BUSCADOR   = "buscar";
+		public static $ACTION_GET_ALL_PRODUCTOS_BY_AJAX = "get_all_productos_by_ajax";
 
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";
 		public static $ID_PRODUCTO           = "product";
+
+		public static $BUSCAR_TXT            = "buscar_txt";
 
 		/* Clasificación de carpetas para los distintos usuarios */
 		public static $PATH_USER_ADMIN       = "/rol/user-admin";

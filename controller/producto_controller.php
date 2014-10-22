@@ -156,10 +156,50 @@
 		    return $this->view->success(true);
 		}
 
-		//PRIVATE FUNCTIONS //
-		private function getPage($cant_paginas,$cant_elementos,$idCategoria){
+		public function getAllProductosByAjax(){
+			$buscar_txt = $this->getDataRequest(ConfigApp::$BUSCAR_TXT);
+			$buscar_txt = trim($buscar_txt);
+			$buscar_txt = $this->sacarEspaciosEnBlanco($buscar_txt);
+			$buscar_txt = explode(" ",$buscar_txt);
+			if (count($buscar_txt) == 1){
+				$buscar_txt = $buscar_txt[0];
+			}
+			$cant_elementos = 5; // cantidad de elementos por pagina
+			$cant_paginas = 5; // cantidad de paginas en el paginador
+			
+			$arr = $this->getPage($cant_paginas,$cant_elementos,false,$buscar_txt);
+			$page = $arr['page'];
+			$ini  = $arr['ini'];
+			$fin  = $arr['fin'];
+			$nPaginas = $arr['nPaginas'];
 
-			$nPaginas = $this->countPage($cant_elementos,$idCategoria);
+			$offset = $this->getOffset($page,$cant_elementos);
+			$data = $this->model->getAll($buscar_txt,$offset, $cant_elementos);
+			$params = array(
+					"productos" => $data,
+					"nPagina_ini" => $ini,
+					"nPagina_fin" => $fin,
+					"nPagina_max" => $nPaginas,
+					"page" => $page
+					);
+			$this->view->json($params);
+		}
+
+		public function buscarProducto(){
+			$buscar_txt = $this->getDataRequest(ConfigApp::$BUSCAR_TXT);
+			$buscar_txt = trim($buscar_txt);
+			$buscar_txt = $this->sacarEspaciosEnBlanco($buscar_txt);
+			
+			$params = array(
+					"txt_buscar" => $buscar_txt
+					);
+			$this->view->buscarProducto($params);
+		}
+
+		//PRIVATE FUNCTIONS //
+		private function getPage($cant_paginas,$cant_elementos,$idCategoria = false,$buscar_txt = false){
+
+			$nPaginas = $this->countPage($cant_elementos,$idCategoria,$buscar_txt);
 
 			if ($nPaginas == 0){
 				return array('page' => 1, 'ini'=>1, 'fin'=>1, 'nPaginas' => 1);
@@ -201,8 +241,13 @@
 			return array('page' => $page, 'ini'=>$ini, 'fin'=>$fin, 'nPaginas' => $nPaginas);
 		}
 
-		private function countPage($cant,$idCategoria){
-			$count = $this->model->count($idCategoria);
+		private function countPage($cant,$idCategoria=false,$buscar_txt=false){
+			$count = 0;
+			if ($idCategoria){
+				$count = $this->model->count($idCategoria);
+			}else if ($idCategoria == false && $buscar_txt){
+				$count = $this->model->count(false,$buscar_txt);
+			}
 			$nPaginas = ceil($count / $cant);
 			return $nPaginas;
 		}
@@ -212,6 +257,21 @@
 
 			return $offset;
 
+		}
+
+		private function sacarEspaciosEnBlanco($texto){
+			$i = 0;
+			while ($i < strlen($texto)){
+				if (substr($texto,$i,1) == " " &&
+					substr($texto,$i+1,1) == " "){
+					$a = substr($texto, 0,$i);
+					$b = substr($texto, $i+1, strlen($texto) - strlen($a));
+					$texto = $a . $b;
+				}else{
+					$i++;
+				}
+			}
+			return $texto;
 		}
 		
 		

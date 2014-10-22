@@ -24,6 +24,7 @@
 		private $listadoVacioTpl = "listadoVacio.tpl";
 		private $detalleProductoTpl = "detalleProducto.tpl";
 		private $publicarProductoTpl = "publicarProducto.tpl";
+		private $buscarProductoTpl = "buscarProducto.tpl";
 
 		/**
 		 * metodo listadoPorCategoria
@@ -52,6 +53,11 @@
 
 		public function publicarProducto(){
 			$this->render($this->publicarProductoTpl);
+		}
+
+		public function buscarProducto($params){
+			$this->setParams($params);
+			$this->render($this->buscarProductoTpl);
 		}
 	}
 

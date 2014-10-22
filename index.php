@@ -41,9 +41,19 @@
 			case ConfigApp::$ACTION_CARGAR_PUBLICACION:
 				$productoController = new ProductoController();
 				$productoController->cargarPublicacion();
+				break;
 			case ConfigApp::$ACTION_GET_CARACTERISTICAS:
 				$caracteristicaController = new CaracteristicaController();
 				$caracteristicaController->getAllCaracteristicasPorCategoriaByAjax();
+				break;
+			case ConfigApp::$ACTION_BUSCADOR:
+				$productoController = new ProductoController();
+				$productoController->buscarProducto();
+				break;
+			case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
+				$productoController = new ProductoController();
+				$productoController->getAllProductosByAjax();
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;

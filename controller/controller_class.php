@@ -81,6 +81,8 @@
 					case ConfigApp::$ACTION_GET_CATEGORIAS:
 					case ConfigApp::$ACTION_CARGAR_PUBLICACION:
 					case ConfigApp::$ACTION_GET_CARACTERISTICAS:
+					case ConfigApp::$ACTION_BUSCADOR:
+					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
 						return true;
 						break;
 					default:
