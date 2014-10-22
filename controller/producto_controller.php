@@ -104,7 +104,7 @@
 				$caracteristicas[] = array('v_nombre' => "Precio",
 										   'v_valor' => "$".$data['f_precio']);
 			}
-			
+			$this->setVisitados($id_producto);
 			$params = array(
 				'data' => $data,
 				'caracteristicas' => $caracteristicas
@@ -274,6 +274,10 @@
 			return $texto;
 		}
 		
+		/*llama a el procedimiento de la base para incrementar el nVisitado del producto*/
+		private function setVisitados($id_producto){
+			$this->model->setVisitados($id_producto);
+		}
 		
 	}
 

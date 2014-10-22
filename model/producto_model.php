@@ -33,6 +33,10 @@
 				           	    v_descripcion like :texto or 
 				                f_precio like  :texto )";
 
+		private $sql_setVisitados =  "call incVisitados( :id_producto )";
+		
+	
+
 		public function getTabla(){
 			return $this->tabla;
 		}
@@ -109,6 +113,11 @@
 			return $this->query($sql_getAll,$param);
 		}
 
+		public function  setVisitados($id_producto){
+			$param=array(':id_producto' => $id_producto);
+			$this->query($this->sql_setVisitados,$param);
+		}
+
 		private function generateWhereBuscador($texto=false){
 			$where = " ";
 			if (is_string($texto)){
@@ -137,6 +146,8 @@
 			}
 			return $param;
 		}
+
+
 	}
 
 ?>
