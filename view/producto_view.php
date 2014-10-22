@@ -37,25 +37,30 @@
 			$this->set("title",$title);
 		}
 		public function listadoPorCategoria($params){
+			$this->set("title","Listado por categor&iacute;a : Trastos");
 			$this->setParams($params);
 			$this->render($this->listadoPorCategoriaTpl);
 		}
 
 		public function listadoVacio($params){
+			$this->set("title","Listado por categor&iacute;a : Trastos");
 			$this->setParams($params);
 			$this->render($this->listadoVacioTpl);
 		}
 
 		public function detalleProducto($params){
+			$this->set("title","Detalle producto : Trastos");
 			$this->setParams($params);
 			$this->render($this->detalleProductoTpl);
 		}
 
 		public function publicarProducto(){
+			$this->set("title","Publicar producto : Trastos");
 			$this->render($this->publicarProductoTpl);
 		}
 
 		public function buscarProducto($params){
+			$this->set("title","Busqueda productos : Trastos");
 			$this->setParams($params);
 			$this->render($this->buscarProductoTpl);
 		}
