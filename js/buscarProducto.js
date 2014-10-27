@@ -1,75 +1,89 @@
-$(document).ready(function() {
 
+
+$(document).ready(function() {
 	var txt_buscar = $('#buscador #buscar_txt').val();
+
+	var objTpl;
+
+	var optionsTpl = {
+		v_img_path :{
+			src : "v_img_path"
+		},
+		id_producto :{
+			href : "id_producto",
+			text : "v_nombre"
+		},
+		v_descripcion : {
+			text : "v_descripcion"
+		},
+		f_precio : {
+			text : "f_precio"
+		},
+		ts_creado : {
+			text : "ts_creado"
+		},
+		n_visitado : {
+			text : "n_visitado"
+		},
+		f_precio_2 : {
+			text : "f_precio"
+		}
+	};
 
 	$.ajax({
 		url: 'index.php',
-		type: 'GET',
-		dataType: 'json',
-		data: {action : "get_all_productos_by_ajax", buscar_txt:txt_buscar},
-		success : updateListado
+		type: 'POST',
+		dataType: 'html',
+		data: {action: 'get_tmp_listado_by_ajax'},
+		success : function(data){
+			objTpl = $(data);
+			$.ajax({
+				url: 'index.php',
+				type: 'GET',
+				dataType: 'json',
+				data: {action : "get_all_productos_by_ajax", buscar_txt:txt_buscar},
+				success : function(data){
+					updateListado(data,objTpl,optionsTpl);
+				}
+			});
+		}
 	});
-	
 
 	$('#buscador').ajaxForm({
 		url : "index.php",
 		type : "GET",
 		dataType : "json",
 		data : {action : "get_all_productos_by_ajax"},
-		success : updateListado
+		success : function(data){
+			updateListado(data,objTpl,optionsTpl);
+		}
 	});
-
+	
 });	
 
-
-function updateListado(data){
+function updateListado(data,objTpl,optionsTpl){
+	var objAux = null;
 	$("#listado_productos").empty();
-	
-	$.each(data.productos, function(index, p) {
-		$("#listado_productos").append( 
-			'<div class="row row-trastos">'+
-			'	<div class="col-xs-12 col-sm-3 col-md-2" >'+
-			'		<a href="">'+
-			'			<img src="'+ p.v_img_path +'" class="thumbnail img-responsive img-producto center-block">'+
-			'		</a>'+
-			'		'+
-			'	</div>'+
-			'	<div class="col-xs-12 col-sm-9 col-md-10 " >'+
-			' 	<div class="row">'+
-			'			<div class="col-sm-8 col-md-9">'+
-			'				<h3 class="txt-nombre-producto">'+
-			'					<a href="index.php?action=detalle&product='+p.id_producto+'">'+
-			'						'+p.v_nombre+	
-			'					</a>'+
-			'				</h3>'+
-			'				<p>'+
-			'					'+ p.v_descripcion +
-            ''+
-			'				</p>'+
-			'			</div>'+
-			'			<div class="col-sm-4 col-md-3 hidden-xs">'+
-			'				<span class="label label-default info-precio-producto ">$ '+parseFloat(p.f_precio).toFixed(2)+'</span>'+
-            ' '+
-			'				<span class = "info-extra-producto">'+
-			'					Desde: 									'+p.ts_creado+
-			'				</span>'+
-			'				<span class = "info-extra-producto">'+
-			'					<i class = "glyphicon glyphicon-eye-open"></i>'+
-			'					'+p.n_visitado+
-			'				</span>'+
-			'				'+
-			'			</div>'+
-			'			'+
-			'			'+
-			'			<div class="col-xs-12 txt-nombre-producto visible-xs">'+
-			'				<span class="label label-default">$ '+parseFloat(p.f_precio).toFixed(2)+'</span>'+
-			'			</div>'+
-			'			'+
-			'		</div>'+
-            ''+
-			'	</div>'+
-            ''+
-			'</div>');
-		
+	$.each(data.productos,function(k,v){
+		objAux = objTpl.clone();
+		$.each(optionsTpl, function(tag, values) {
+			$.each(values,function(attr,val){
+				if ( attr != 'text'){
+					var a = $(objAux).find('[tag="'+tag+'"]').attr(attr);
+					if (a == undefined){
+						a = v[val];
+					}else{
+						a = a.replace(val,v[val]);
+					}
+					$(objAux).find('[tag="'+tag+'"]').attr(attr,a);
+				}else{
+					var t = $(objAux).find('[tag="'+tag+'"]').html();
+					t = t.replace(val,v[val]);
+					$(objAux).find('[tag="'+tag+'"]').html(t);
+				}
+			});
+		});
+		$("#listado_productos").append(objAux);
 	});
 }
+

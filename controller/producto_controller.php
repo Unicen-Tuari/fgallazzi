@@ -164,7 +164,7 @@
 			if (count($buscar_txt) == 1){
 				$buscar_txt = $buscar_txt[0];
 			}
-			$cant_elementos = 5; // cantidad de elementos por pagina
+			$cant_elementos = 10; // cantidad de elementos por pagina
 			$cant_paginas = 5; // cantidad de paginas en el paginador
 			
 			$arr = $this->getPage($cant_paginas,$cant_elementos,false,$buscar_txt);
@@ -194,6 +194,10 @@
 					"txt_buscar" => $buscar_txt
 					);
 			$this->view->buscarProducto($params);
+		}
+
+		public function getTmpListadoByAjax(){
+			$this->view->getTmpListadoByAjax();
 		}
 
 		//PRIVATE FUNCTIONS //

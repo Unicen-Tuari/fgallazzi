@@ -25,6 +25,7 @@
 		private $detalleProductoTpl = "detalleProducto.tpl";
 		private $publicarProductoTpl = "publicarProducto.tpl";
 		private $buscarProductoTpl = "buscarProducto.tpl";
+		private $listadoProductoTpl = "listadoProducto.tpl";
 
 		/**
 		 * metodo listadoPorCategoria
@@ -63,6 +64,11 @@
 			$this->set("title","Busqueda productos : Trastos");
 			$this->setParams($params);
 			$this->render($this->buscarProductoTpl);
+		}
+
+		public function getTmpListadoByAjax(){
+			$this->render($this->listadoProductoTpl);
+
 		}
 	}
 

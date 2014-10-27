@@ -92,6 +92,7 @@
 					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
 					case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
 					case ConfigApp::$ACTION_LOGIN_BY_AJAX:
+					case ConfigApp::$ACTION_GET_TMP_LISTADO_BY_AJAX:
 						return true;
 						break;
 					default:

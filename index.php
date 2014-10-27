@@ -69,6 +69,10 @@
 				$usuarioController = new UsuarioController();
 				$usuarioController->loginByAjax();
 				break;	
+			case ConfigApp::$ACTION_GET_TMP_LISTADO_BY_AJAX:
+				$productoController = new ProductoController();
+				$productoController->getTmpListadoByAjax();	
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;
