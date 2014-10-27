@@ -25,7 +25,6 @@
 			<button type="submit" class="btn btn-default">Go</button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#">Publicar</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">M&iacute; cuenta <b class="caret"></b></a>
 				<ul class="dropdown-menu">

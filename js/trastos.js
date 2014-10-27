@@ -4,6 +4,9 @@ $(document).ready(function() {
 
 	// carrito de compra
 	$('body').append('<div id = "content-carrito-compra" class = "hidden"> </div>');
+
+	// formulario de login
+	$('body').append('<div id = "content-form-login" class = "hidden"> </div>');
 });	
 
 
@@ -38,10 +41,28 @@ function miCarrito_onclick(){
 			success : function(data){
 				$('#content-carrito-compra').html(data).removeClass('hidden');
 				$('#modal-carrito').modal('show');
-				$('#modal-carrito').on('hidden.bs.modal', function (e) {
-					$('#content-carrito-compra').addClass('hidden');
+				
+
+			}
+		});
+}
+
+function formLogin_onclick(){
+	$('#content-form-login').empty();
+		var that = this;
+		$.ajax({
+			url: 'index.php',
+			type: 'POST',
+			dataType: 'html',
+			data: {action: 'form_login_by_ajax'},
+			success : function(data){
+				$('#content-form-login').html(data).removeClass('hidden');
+				$('#modal-login').modal('show');
+				$('#modal-login').on('hidden.bs.modal', function (e) {
+					$('#content-form-login').addClass('hidden');
 				})
 
 			}
 		});
+
 }

@@ -24,6 +24,8 @@
 		public static $ACTION_BUSCADOR   = "buscar";
 		public static $ACTION_GET_ALL_PRODUCTOS_BY_AJAX = "get_all_productos_by_ajax";
 		public static $ACTION_GET_CARRITO_BY_AJAX = "carrito_compra_by_ajax";
+		public static $ACTION_FORM_LOGIN_BY_AJAX = "form_login_by_ajax";
+		public static $ACTION_LOGIN_BY_AJAX = "login_by_ajax";
 
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";

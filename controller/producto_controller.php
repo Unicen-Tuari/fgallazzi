@@ -53,8 +53,8 @@
 			//Recuperar los productos de la base
 			//$data = $this->model->getAllByCategoria($idCategoria);
 			
-			$cant_elementos = 20; // cantidad de elementos por pagina
-			$cant_paginas = 5; // cantidad de paginas en el paginador
+			$cant_elementos = 5; // cantidad de elementos por pagina
+			$cant_paginas = 10; // cantidad de paginas en el paginador
 			
 			$arr = $this->getPage($cant_paginas,$cant_elementos,$idCategoria);
 			$page = $arr['page'];

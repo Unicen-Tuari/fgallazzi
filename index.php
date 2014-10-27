@@ -14,7 +14,9 @@
 	include_once "controller/categoria_controller.php";
 	include_once "controller/caracteristica_controller.php";
 	include_once "controller/carrito_controller.php";
+	include_once "controller/usuario_controller.php";
 
+	session_start();
 	
 	if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST ) || $_REQUEST[ConfigApp::$ACTION] == ConfigApp::$ACTION_HOME){
 		// Home del sitio
@@ -59,6 +61,14 @@
 				$carritoController = new CarritoController();
 				$carritoController->carritoCompraByAjax();
 				break;
+			case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
+				$usuarioController = new UsuarioController();
+				$usuarioController->formLoginByAjax();
+				break;
+			case ConfigApp::$ACTION_LOGIN_BY_AJAX:
+				$usuarioController = new UsuarioController();
+				$usuarioController->loginByAjax();
+				break;	
 			default:
 				echo "Pagina no encontrada";
 				break;

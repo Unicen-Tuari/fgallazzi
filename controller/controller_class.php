@@ -66,7 +66,13 @@
 		 */
 
 		private function identificarUsuario(){
-			return ConfigApp::$USER_NO_LOGUEADO;
+			if (!isset($_SESSION['user'])){
+				return ConfigApp::$USER_NO_LOGUEADO;
+			}else if ($_SESSION['rol'] == 'MONO'){
+				return ConfigApp::$USER_LOGUEADO;
+			}else if ($_SESSION['rol'] == 'ADMIN'){
+				return ConfigApp::$USER_ADMIN;
+			}
 		}
 
 		private function controlUsuario(){
@@ -84,6 +90,8 @@
 					case ConfigApp::$ACTION_BUSCADOR:
 					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
 					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
+					case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
+					case ConfigApp::$ACTION_LOGIN_BY_AJAX:
 						return true;
 						break;
 					default:
@@ -92,20 +100,60 @@
 				}
 
 			} else if ($user == ConfigApp::$USER_LOGUEADO){
+				switch ($this->getDataRequest(ConfigApp::$ACTION)) {
+					case false : 
+					case ConfigApp::$ACTION_HOME:
+					case ConfigApp::$ACTION_PRODUCTOS:
+					case ConfigApp::$ACTION_DETALLE:
+					case ConfigApp::$ACTION_PUBLICAR:
+					case ConfigApp::$ACTION_GET_CATEGORIAS:
+					case ConfigApp::$ACTION_CARGAR_PUBLICACION:
+					case ConfigApp::$ACTION_GET_CARACTERISTICAS:
+					case ConfigApp::$ACTION_BUSCADOR:
+					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
+					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
+					case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
+					case ConfigApp::$ACTION_LOGIN_BY_AJAX:
+						return true;
+						break;
+					default:
+						return false;
+						break;
+				}
 
 			} else if ($user == ConfigApp::$USER_ADMIN){
-				
+				switch ($this->getDataRequest(ConfigApp::$ACTION)) {
+					case false : 
+					case ConfigApp::$ACTION_HOME:
+					case ConfigApp::$ACTION_PRODUCTOS:
+					case ConfigApp::$ACTION_DETALLE:
+					case ConfigApp::$ACTION_PUBLICAR:
+					case ConfigApp::$ACTION_GET_CATEGORIAS:
+					case ConfigApp::$ACTION_CARGAR_PUBLICACION:
+					case ConfigApp::$ACTION_GET_CARACTERISTICAS:
+					case ConfigApp::$ACTION_BUSCADOR:
+					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
+					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
+					//case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
+					//case ConfigApp::$ACTION_LOGIN_BY_AJAX:
+						return true;
+						break;
+					default:
+						return false;
+						break;
+				}
 			}
 		}
 
 		private function setPathUser (){
 			if ($this->identificarUsuario() == ConfigApp::$USER_NO_LOGUEADO){
 				$this->pathUser = ConfigApp::$PATH_USER_NO_LOGUEADO;
+			}else if ($this->identificarUsuario() == ConfigApp::$USER_LOGUEADO){
+				$this->pathUser = ConfigApp::$PATH_USER_LOGUEADO;
+			}else if ($this->identificarUsuario() == ConfigApp::$USER_ADMIN){
+				$this->pathUser = ConfigApp::$PATH_USER_ADMIN;
 			}
 		}
-
-
-		
 	}
 
  ?>
