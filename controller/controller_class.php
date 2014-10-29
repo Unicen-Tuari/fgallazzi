@@ -68,10 +68,12 @@
 		private function identificarUsuario(){
 			if (!isset($_SESSION['user'])){
 				return ConfigApp::$USER_NO_LOGUEADO;
-			}else if ($_SESSION['rol'] == 'MONO'){
+			}else if ($_SESSION['rol'] == ConfigApp::$USER_LOGUEADO){
 				return ConfigApp::$USER_LOGUEADO;
-			}else if ($_SESSION['rol'] == 'ADMIN'){
+			}else if ($_SESSION['rol'] == ConfigApp::$USER_ADMIN){
 				return ConfigApp::$USER_ADMIN;
+			}else{
+				return false;
 			}
 		}
 
@@ -93,6 +95,8 @@
 					case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
 					case ConfigApp::$ACTION_LOGIN_BY_AJAX:
 					case ConfigApp::$ACTION_GET_TMP_LISTADO_BY_AJAX:
+					case ConfigApp::$ACTION_FORM_NUEVO_USUARIO_BY_AJAX:
+					case ConfigApp::$ACTION_ALTA_NUEVO_USUARIO_BY_AJAX:
 						return true;
 						break;
 					default:
@@ -113,8 +117,12 @@
 					case ConfigApp::$ACTION_BUSCADOR:
 					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
 					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
-					case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
-					case ConfigApp::$ACTION_LOGIN_BY_AJAX:
+					//case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
+					//case ConfigApp::$ACTION_LOGIN_BY_AJAX:
+					case ConfigApp::$ACTION_GET_TMP_LISTADO_BY_AJAX:
+					//case ConfigApp::$ACTION_FORM_NUEVO_USUARIO_BY_AJAX:
+					//case ConfigApp::$ACTION_ALTA_NUEVO_USUARIO_BY_AJAX:
+					case ConfigApp::$ACTION_LOGOUT_BY_AJAX:
 						return true;
 						break;
 					default:
@@ -144,6 +152,16 @@
 						break;
 				}
 			}
+		}
+
+		public function setDataSession($data){
+			foreach ($data as $key => $value) {
+				$_SESSION[$key] = $value;
+			}
+		}
+
+		public function getDataSession($key){
+			return (isset($_SESSION[$key])) ? $_SESSION[$key] : false;
 		}
 
 		private function setPathUser (){

@@ -9,8 +9,8 @@ $(document).ready(function() {
 		data : {action:"login_by_ajax"},
 		success : function(data){
 			if ('success' in data && data.success){
-				alert("estas logueado");
-
+				alert(data.user);
+				window.location.href = "index.php";
 			}
 		}
 	};

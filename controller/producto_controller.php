@@ -19,7 +19,7 @@
 		{
 			parent::__construct();
 			$this->model = new ProductoModel();
-			$this->view = new ProductoView($this->pathUser);
+			$this->view = new ProductoView($this->pathUser,$this->getDataSession('user'));
 			
 		}
 

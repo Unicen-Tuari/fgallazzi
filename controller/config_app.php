@@ -8,9 +8,9 @@
 		
 
 		/* Clasificación de usuarios */
-		public static $USER_NO_LOGUEADO  = "user_default";
-		public static $USER_LOGUEADO     = "logueado";
-		public static $USER_ADMIN        = "admin";
+		public static $USER_NO_LOGUEADO  = 0;
+		public static $USER_ADMIN        = 1;
+		public static $USER_LOGUEADO     = 2;
 
 		/* Clasificacion de actions */
 		public static $ACTION            = 'action';
@@ -27,7 +27,10 @@
 		public static $ACTION_FORM_LOGIN_BY_AJAX = "form_login_by_ajax";
 		public static $ACTION_LOGIN_BY_AJAX = "login_by_ajax";
 		public static $ACTION_GET_TMP_LISTADO_BY_AJAX = "get_tmp_listado_by_ajax";
-
+		public static $ACTION_FORM_NUEVO_USUARIO_BY_AJAX = "form_nuevo_usuario_by_ajax";
+		public static $ACTION_ALTA_NUEVO_USUARIO_BY_AJAX = "alta_nuevo_usuario_by_ajax";
+		public static $ACTION_LOGOUT_BY_AJAX = "logout_by_ajax";
+		
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";
 		public static $ID_PRODUCTO           = "product";

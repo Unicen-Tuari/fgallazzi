@@ -10,9 +10,9 @@
 		/**
 		 * Constructor
 		 * */
-		function __construct($pathUser=false)
+		function __construct($pathUser=false,$nameUser=false)
 		{
-			parent::__construct($pathUser);
+			parent::__construct($pathUser,$nameUser);
 			$this->addDir("./templates/producto/");
 			$this->set("ACTION",ConfigApp::$ACTION);
 			$this->set("ACTION_DETALLE",ConfigApp::$ACTION_DETALLE);

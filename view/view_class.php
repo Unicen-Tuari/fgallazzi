@@ -12,10 +12,11 @@
 		/**
 		 * Constructor
 		 */
-		function __construct($pathUser=false)
+		function __construct($pathUser=false,$nameUser=false)
 		{
 			$this->templateEng = new Smarty();
 			$this->set("pathUser",$pathUser);
+			$this->set("NOMBRE_USER",$nameUser);
 			$this->addDir("./templates/layouts");
 		}
 

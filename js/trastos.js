@@ -7,6 +7,9 @@ $(document).ready(function() {
 
 	// formulario de login
 	$('body').append('<div id = "content-form-login" class = "hidden"> </div>');
+
+	// formolario de nuevo usuario
+	$('body').append('<div id = "content-form-nuevo-usuario" class = "hidden"> </div>');
 });	
 
 
@@ -31,25 +34,32 @@ function marcarActiveMenu(url){
 }
 
 function miCarrito_onclick(){
-	$('#content-carrito-compra').empty();
-		var that = this;
-		$.ajax({
-			url: 'index.php',
-			type: 'POST',
-			dataType: 'html',
-			data: {action: 'carrito_compra_by_ajax'},
-			success : function(data){
-				$('#content-carrito-compra').html(data).removeClass('hidden');
-				$('#modal-carrito').modal('show');
-				
-
-			}
-		});
+	MI_CARRITO_TRASTOS.show();
 }
 
+var MI_CARRITO_TRASTOS = { 
+	show : function(){
+		$('#content-carrito-compra').empty();
+			$.ajax({
+				url: 'index.php',
+				type: 'POST',
+				dataType: 'html',
+				data: {action: 'carrito_compra_by_ajax'},
+				success : function(data){
+					$('#content-carrito-compra').html(data).removeClass('hidden');
+					$('#modal-carrito').modal('show');
+				}
+			});
+	}
+};
+
 function formLogin_onclick(){
-	$('#content-form-login').empty();
-		var that = this;
+	FORM_LOGIN_TRASTOS.show();
+}
+	
+var FORM_LOGIN_TRASTOS = { 
+	show : function(){	
+	 	$('#content-form-login').empty();
 		$.ajax({
 			url: 'index.php',
 			type: 'POST',
@@ -64,5 +74,40 @@ function formLogin_onclick(){
 
 			}
 		});
+	}
+}
 
+function formRegistrarme_onclick(){
+	$('#content-form-nuevo-usuario').empty();
+		var that = this;
+		$.ajax({
+			url: 'index.php',
+			type: 'POST',
+			dataType: 'html',
+			data: {action: 'form_nuevo_usuario_by_ajax'},
+			success : function(data){
+				$('#content-form-nuevo-usuario').html(data).removeClass('hidden');
+				$('#modal-nuevo-usuario').modal('show');
+				$('#modal-nuevo-usuario').on('hidden.bs.modal', function (e) {
+					$('#content-form-nuevo-usuario').empty();
+				})
+
+			}
+		});
+
+}
+
+function salir_onclick(){
+	$.ajax({
+		url: 'index.php',
+		type: 'POST',
+		dataType: 'json',
+		data: {action: 'logout_by_ajax'},
+		success : function(data){
+			if ('success' in data && data.success){
+				window.location.href = "index.php";
+			}
+
+		}
+	});
 }

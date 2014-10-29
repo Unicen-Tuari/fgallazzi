@@ -55,6 +55,7 @@
         
       </div>
       <div class="modal-footer">
+
         <button type="submit" name = "enviar" form = "form_sesion_login" class="btn btn-default" >Entrar</button>
        
       </div>

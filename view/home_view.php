@@ -9,13 +9,12 @@
 		/**
 		 * Constructor
 		 * */
-		function __construct($pathUser=false)
+		function __construct($pathUser=false,$nameUser=false)
 		{
-			parent::__construct($pathUser);
+			parent::__construct($pathUser,$nameUser);
 			$this->addDir("./templates/home/");
 			$this->set("ACTION",ConfigApp::$ACTION);
 			$this->set("ACTION_PUBLICAR",ConfigApp::$ACTION_PUBLICAR);
-
 		}
 
 		private $homeTpl = "home.tpl";

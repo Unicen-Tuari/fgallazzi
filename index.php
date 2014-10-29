@@ -73,6 +73,18 @@
 				$productoController = new ProductoController();
 				$productoController->getTmpListadoByAjax();	
 				break;
+			case ConfigApp::$ACTION_FORM_NUEVO_USUARIO_BY_AJAX:
+				$usuarioController = new UsuarioController();
+				$usuarioController->formNuevoUsuarioByAjax();	
+				break;
+			case ConfigApp::$ACTION_ALTA_NUEVO_USUARIO_BY_AJAX:
+				$usuarioController = new UsuarioController();
+				$usuarioController->altaNuevoUsuarioByAjax();	
+				break;
+			case ConfigApp::$ACTION_LOGOUT_BY_AJAX:
+				$usuarioController = new UsuarioController();
+				$usuarioController->logOutByAjax();	
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;

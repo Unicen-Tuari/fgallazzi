@@ -16,6 +16,7 @@
 		}
 
 		private $loginModalTpl = "login_modal.tpl";
+		private $formNuevoUsuarioTpl = "nuevo_usuario_modal.tpl";
 
 		
 		/**
@@ -26,6 +27,10 @@
 		
 		public function formLoginByAjax(){
 			return $this->render($this->loginModalTpl);
+		}
+
+		public function formNuevoUsuarioByAjax(){
+			return $this->render($this->formNuevoUsuarioTpl);
 		}
 	}
 
