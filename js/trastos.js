@@ -10,6 +10,7 @@ $(document).ready(function() {
 
 	// formolario de nuevo usuario
 	$('body').append('<div id = "content-form-nuevo-usuario" class = "hidden"> </div>');
+
 });	
 
 
@@ -34,12 +35,15 @@ function marcarActiveMenu(url){
 }
 
 function miCarrito_onclick(){
+	
 	MI_CARRITO_TRASTOS.show();
+	
 }
 
 var MI_CARRITO_TRASTOS = { 
 	show : function(){
 		$('#content-carrito-compra').empty();
+			LOADING.show();
 			$.ajax({
 				url: 'index.php',
 				type: 'POST',
@@ -48,6 +52,7 @@ var MI_CARRITO_TRASTOS = {
 				success : function(data){
 					$('#content-carrito-compra').html(data).removeClass('hidden');
 					$('#modal-carrito').modal('show');
+					LOADING.hide();
 				}
 			});
 	}
@@ -58,8 +63,13 @@ function formLogin_onclick(){
 }
 	
 var FORM_LOGIN_TRASTOS = { 
+	actionDefault : function(){
+		window.location.href = "index.php";
+	},
+	action : null,
 	show : function(){	
-	 	$('#content-form-login').empty();
+		LOADING.show();
+		$('#content-form-login').empty();
 		$.ajax({
 			url: 'index.php',
 			type: 'POST',
@@ -70,14 +80,33 @@ var FORM_LOGIN_TRASTOS = {
 				$('#modal-login').modal('show');
 				$('#modal-login').on('hidden.bs.modal', function (e) {
 					$('#content-form-login').addClass('hidden');
-				})
-
+				});
+				LOADING.hide();
 			}
+		});
+	},
+	setAction : function(obj){
+		this.action = obj;
+	},
+	getAction : function(){
+		if (this.action != null){
+			var a = this.action;
+			this.action = null;
+			return a;
+		} else {
+			return this.actionDefault;
+		}
+	},
+	hide : function(){
+		$('#modal-login').modal('hide');
+		$('#modal-login').on('hidden.bs.modal', function (e) {
+			$('#content-form-login').addClass('hidden');
 		});
 	}
 }
 
 function formRegistrarme_onclick(){
+	LOADING.show();
 	$('#content-form-nuevo-usuario').empty();
 		var that = this;
 		$.ajax({
@@ -90,7 +119,8 @@ function formRegistrarme_onclick(){
 				$('#modal-nuevo-usuario').modal('show');
 				$('#modal-nuevo-usuario').on('hidden.bs.modal', function (e) {
 					$('#content-form-nuevo-usuario').empty();
-				})
+				});
+				LOADING.hide();
 
 			}
 		});
@@ -111,3 +141,25 @@ function salir_onclick(){
 		}
 	});
 }
+
+
+function getRandomId(frase){
+	var id = $.now();
+	frase = (frase == undefined) ? '' : frase;
+	while ($('#' + frase + id).length > 0 ){
+		id += Math.random() * 1000;
+	}
+	return frase + id;
+}
+
+var LOADING = {
+	id : "content-loading-icon",
+	show : function(){
+		var left = Math.floor($('body').width() / 2  - $('#'+ this.id).width() / 2) + 'px';
+		var top = Math.floor(window.innerHeight / 2 - 100) + 'px';
+		$('#'+ this.id).css('left', left).css('top', top).removeClass('hidden');
+	},
+	hide : function(){
+		$('#'+ this.id).addClass('hidden');
+	}
+};

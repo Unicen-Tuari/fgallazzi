@@ -20,6 +20,9 @@
 
 	{block name=footer}{/block}
 
+
+	
+
 	<!-- Libreria JQuery -->
 	<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
 	
@@ -29,6 +32,13 @@
 	<script type="text/javascript" src = "js/trastos.js"></script>	
 	
 	{block name=scriptJS}{/block}
+
+	<div id = "content-loading-icon"  style ="position:fixed; margin:0px;" class = "hidden">
+		<div id="escapingBallG">
+			<div id="escapingBall_1" class="escapingBallG">
+			</div>
+		</div> 
+	</div>
 
 </body>
 </html>

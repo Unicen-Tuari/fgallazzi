@@ -18,7 +18,7 @@
 			<li ><a href="index.php?action=home" name = "home">Home</a></li>
 			<li><a href="#"></a></li>
 		</ul>
-		<form class="navbar-form navbar-left" role="search" id="buscador" method="post">
+		<form class="navbar-form navbar-left" role="search" id="buscador" method="get">
 			<div class="form-group">
 				<input type="hidden" name = "action" value = "buscar"/>
 				<input type="text" class="form-control" placeholder="Buscar" id="buscar_txt" name = "buscar_txt" 
