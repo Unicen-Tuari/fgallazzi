@@ -163,3 +163,27 @@ var LOADING = {
 		$('#'+ this.id).addClass('hidden');
 	}
 };
+
+var DIALOG = {
+	id : "content-dialog",
+	dialog : null,
+	show : function(mensaje){
+		if (this.dialog == null){
+			this.dialog = $('#' + this.id + " #modal-dialog");
+			var that = this;
+			this.dialog.on('hidden.bs.modal', function (e) {
+					that.hide();
+			});
+		}
+		$('#' + this.id).removeClass('hidden');
+		if (mensaje){
+			this.dialog.find('.modal-body p').html(mensaje);
+		}
+		this.dialog.modal('show');
+	},
+	hide : function(){
+		this.dialog.modal('hide');
+		this.dialog.find('.modal-body p').html('');
+		$('#' + this.id).addClass('hidden');
+	}
+}

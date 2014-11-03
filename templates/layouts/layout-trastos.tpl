@@ -33,6 +33,8 @@
 	
 	{block name=scriptJS}{/block}
 
+	{include file="modal_dialog.tpl"}
+	
 	<div id = "content-loading-icon"  style ="position:fixed; margin:0px;" class = "hidden">
 		<div id="escapingBallG">
 			<div id="escapingBall_1" class="escapingBallG">
