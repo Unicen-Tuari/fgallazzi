@@ -47,14 +47,27 @@ $(document).ready(function() {
 
 	$('#publicar_producto_guardar').ajaxForm({
 		url: "index.php",
-		clearForm : true,
 		data : {action : "cargar_publicacion"},
 		type : "POST",
 		dataType : 'json',
 		success : function (data){
+			LOADING.hide();
 			if ('success' in data && data.success){
 				$("#modal-success").modal('show');
+			}else if ('action' in data){
+				if (data.action == 'login'){
+					FORM_LOGIN_TRASTOS.setAction(function (){
+						$('#publicar_producto_guardar').submit();
+					});
+					FORM_LOGIN_TRASTOS.show();
+				}
+
 			}
+
+		},
+		beforeSend : function(){
+			console.log("paso");
+			LOADING.show();
 		}
 
 	});

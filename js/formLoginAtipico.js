@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	
+	var next =  getDataURI('next');
 
 	var options = {
 		url : "index.php",
@@ -9,12 +9,9 @@ $(document).ready(function() {
 		data : {action:"login_by_ajax"},
 		success : function(data){
 			if ('success' in data && data.success){
-				var action = FORM_LOGIN_TRASTOS.getAction();
-				FORM_LOGIN_TRASTOS.hide();
-				action();
+				location.href = 'index.php?' + next;
 
 			}else {
-				FORM_LOGIN_TRASTOS.hide();
 				DIALOG.show('La combinación de usuario contraseña no es correcta');
 			}
 		}
@@ -73,3 +70,20 @@ $(document).ready(function() {
 	
 });	
 
+function getDataURI(field){
+	var uri = location.href;
+	var r;
+	uri = uri.split('?');
+	if (uri.length > 1){
+		uri = uri[1].split('&');
+		for (var i = 0 ; i < uri.length; i++){
+			r = uri[i].split('=');
+			if (r.length > 1){
+				if (r[0]==field){
+					return decodeURIComponent(r[1]);
+				}
+			}
+		}
+	}
+	return false;
+}

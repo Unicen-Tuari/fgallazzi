@@ -1,0 +1,46 @@
+{extends file="layout-trastos-atipico.tpl"}
+
+{block name = scriptJS}
+  <script type="text/javascript" src="js/jquery.form.min.js"></script>
+  <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="js/additional-methods.min.js"></script>
+  <script type="text/javascript" src = "js/formLoginAtipico.js"></script>
+{/block}
+
+{block name = body}
+<div class = "content">
+
+  <div class="row">
+    <div class = "col-sm-4 col-sm-push-4"> 
+      <form class="form-horizontal" role="form" id = "form_sesion_login" action = "index.php" >
+        
+        <div class="form-group">
+          <label class="sr-only" for="usuario">Usuario</label>
+          <div class="marca">
+            <input type="text" class="form-control" id="usuario" name="usuario"
+                 placeholder="Usuario">
+          </div>
+          
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="password">Contraseña</label>
+          <div class = "marca">
+            <input type="password" class="form-control" id="password" name="password"
+                 placeholder="Contraseña">
+          </div>
+          
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name = "chk_cerrar_sesion"> No cerrar sesión
+          </label>
+        </div>
+         
+        <button type="submit" name = "enviar" class="btn btn-default">Entrar</button>
+      </form>
+      
+    </div>  
+    
+  </div>
+</div>
+{/block}

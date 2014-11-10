@@ -9,14 +9,15 @@
 		/**
 		 * Constructor
 		 * */
-		function __construct($pathUser=false)
+		function __construct()
 		{
-			parent::__construct($pathUser);
+			parent::__construct();
 			$this->addDir("./templates/usuario/");
 		}
 
 		private $loginModalTpl = "login_modal.tpl";
 		private $formNuevoUsuarioTpl = "nuevo_usuario_modal.tpl";
+		private $formLoginTpl = "form_login.tlp";
 
 		
 		/**
@@ -31,6 +32,10 @@
 
 		public function formNuevoUsuarioByAjax(){
 			return $this->render($this->formNuevoUsuarioTpl);
+		}
+
+		public function formLogin(){
+			return $this->render($this->formLoginTpl);
 		}
 	}
 

@@ -1,6 +1,7 @@
 <?php 
 	include_once "config_app.php";
-
+	include_once "view/view_class.php";
+	
 	/**
 	* Clase Padre Controller
 	*/
@@ -12,12 +13,6 @@
 		function __construct()
 		{
 			$this->data = $_REQUEST;
-			if (!$this->controlUsuario()){
-				echo('No tenes acceso');
-				die;
-			}
-			$this->setPathUser();
-			
 		}
 
 		/**
@@ -26,7 +21,7 @@
 		 */
 
 		protected $data;
-		protected $pathUser;
+		protected $pathUser = "/rol/user-no-logueado";
 
 		/**
 		 * Metodos
@@ -58,6 +53,12 @@
 			return false;
 		}
 
+		protected function getUriParamsRequest(){
+			$uri = $_SERVER['REQUEST_URI'];
+			$uri = explode('?', $uri);
+			return (isset($uri[1]) ? $uri[1] : "");
+		}
+
 		/**
 		 * TODO
 		 * 
@@ -65,94 +66,7 @@
 		 * Implementar un metodo que verifique si el usuario tiene acceso a la pagina.
 		 */
 
-		private function identificarUsuario(){
-			if (!isset($_SESSION['user'])){
-				return ConfigApp::$USER_NO_LOGUEADO;
-			}else if ($_SESSION['rol'] == ConfigApp::$USER_LOGUEADO){
-				return ConfigApp::$USER_LOGUEADO;
-			}else if ($_SESSION['rol'] == ConfigApp::$USER_ADMIN){
-				return ConfigApp::$USER_ADMIN;
-			}else{
-				return false;
-			}
-		}
-
-		private function controlUsuario(){
-			$user = $this->identificarUsuario();
-			if ($user == ConfigApp::$USER_NO_LOGUEADO){
-				switch ($this->getDataRequest(ConfigApp::$ACTION)) {
-					case false : 
-					case ConfigApp::$ACTION_HOME:
-					case ConfigApp::$ACTION_PRODUCTOS:
-					case ConfigApp::$ACTION_DETALLE:
-					case ConfigApp::$ACTION_PUBLICAR:
-					case ConfigApp::$ACTION_GET_CATEGORIAS:
-					case ConfigApp::$ACTION_CARGAR_PUBLICACION:
-					case ConfigApp::$ACTION_GET_CARACTERISTICAS:
-					case ConfigApp::$ACTION_BUSCADOR:
-					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
-					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
-					case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
-					case ConfigApp::$ACTION_LOGIN_BY_AJAX:
-					case ConfigApp::$ACTION_GET_TMP_LISTADO_BY_AJAX:
-					case ConfigApp::$ACTION_FORM_NUEVO_USUARIO_BY_AJAX:
-					case ConfigApp::$ACTION_ALTA_NUEVO_USUARIO_BY_AJAX:
-						return true;
-						break;
-					default:
-						return false;
-						break;
-				}
-
-			} else if ($user == ConfigApp::$USER_LOGUEADO){
-				switch ($this->getDataRequest(ConfigApp::$ACTION)) {
-					case false : 
-					case ConfigApp::$ACTION_HOME:
-					case ConfigApp::$ACTION_PRODUCTOS:
-					case ConfigApp::$ACTION_DETALLE:
-					case ConfigApp::$ACTION_PUBLICAR:
-					case ConfigApp::$ACTION_GET_CATEGORIAS:
-					case ConfigApp::$ACTION_CARGAR_PUBLICACION:
-					case ConfigApp::$ACTION_GET_CARACTERISTICAS:
-					case ConfigApp::$ACTION_BUSCADOR:
-					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
-					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
-					//case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
-					//case ConfigApp::$ACTION_LOGIN_BY_AJAX:
-					case ConfigApp::$ACTION_GET_TMP_LISTADO_BY_AJAX:
-					//case ConfigApp::$ACTION_FORM_NUEVO_USUARIO_BY_AJAX:
-					//case ConfigApp::$ACTION_ALTA_NUEVO_USUARIO_BY_AJAX:
-					case ConfigApp::$ACTION_LOGOUT_BY_AJAX:
-						return true;
-						break;
-					default:
-						return false;
-						break;
-				}
-
-			} else if ($user == ConfigApp::$USER_ADMIN){
-				switch ($this->getDataRequest(ConfigApp::$ACTION)) {
-					case false : 
-					case ConfigApp::$ACTION_HOME:
-					case ConfigApp::$ACTION_PRODUCTOS:
-					case ConfigApp::$ACTION_DETALLE:
-					case ConfigApp::$ACTION_PUBLICAR:
-					case ConfigApp::$ACTION_GET_CATEGORIAS:
-					case ConfigApp::$ACTION_CARGAR_PUBLICACION:
-					case ConfigApp::$ACTION_GET_CARACTERISTICAS:
-					case ConfigApp::$ACTION_BUSCADOR:
-					case ConfigApp::$ACTION_GET_ALL_PRODUCTOS_BY_AJAX:
-					case ConfigApp::$ACTION_GET_CARRITO_BY_AJAX:
-					//case ConfigApp::$ACTION_FORM_LOGIN_BY_AJAX:
-					//case ConfigApp::$ACTION_LOGIN_BY_AJAX:
-						return true;
-						break;
-					default:
-						return false;
-						break;
-				}
-			}
-		}
+		
 
 		public function setDataSession($data){
 			foreach ($data as $key => $value) {
@@ -164,13 +78,11 @@
 			return (isset($_SESSION[$key])) ? $_SESSION[$key] : false;
 		}
 
-		private function setPathUser (){
-			if ($this->identificarUsuario() == ConfigApp::$USER_NO_LOGUEADO){
-				$this->pathUser = ConfigApp::$PATH_USER_NO_LOGUEADO;
-			}else if ($this->identificarUsuario() == ConfigApp::$USER_LOGUEADO){
-				$this->pathUser = ConfigApp::$PATH_USER_LOGUEADO;
-			}else if ($this->identificarUsuario() == ConfigApp::$USER_ADMIN){
-				$this->pathUser = ConfigApp::$PATH_USER_ADMIN;
+		public function isAjax(){
+			if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+			    return true;
+			}else{
+				return false;
 			}
 		}
 	}

@@ -71,7 +71,7 @@
 			if(!$q){
 			  die("Error al ejecutar una consulta, Mensaje: ". $conn->errorInfo());
 			}
-			return $q->fetchAll();
+			return $q->fetchAll(PDO::FETCH_ASSOC);
 		}
 
 		function insert($sql, $param = false){

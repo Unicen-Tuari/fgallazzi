@@ -2,7 +2,7 @@
 	include_once "controller_class.php";
 	include_once "view/usuario_view.php";
 	include_once "model/usuario_model.php";
-
+	include_once "validar_class.php";
 
 	/**
 	 * UsuarioController
@@ -17,7 +17,7 @@
 		{
 			parent::__construct();
 			$this->model = new UsuarioModel();
-			$this->view = new UsuarioView($this->pathUser);
+			$this->view = new UsuarioView();
 			
 		}
 
@@ -36,7 +36,6 @@
 		}
 
 		public function loginByAjax(){
-			//var_dump($this->data);exit();
 			if ($this->isPost()){
 				// autenticar par usuario clave
 				$usuario = $this->getDataRequest('usuario');
@@ -81,6 +80,54 @@
 				$email = $this->getDataRequest('email');
 				$telefono = $this->getDataRequest('telefono');
 				$password = $this->getDataRequest('password');
+				$passwordConfirm = $this->getDataRequest('passwordConfirm');
+
+				// verificar los datos
+				$datos = array(
+						'nombre' => $nombre,
+						'apellido' => $apellido,
+						'email' => $email,
+						'telefono' => $telefono,
+						'password' => $password,
+						'passwordConfirm' => $passwordConfirm
+					);
+				$reglas = array(
+						'nombre' => array(
+								'es_requerido' => true,
+								'max_length' => 50,
+								'min_length' => 2
+							),
+						'apellido' => array(
+								'es_requerido' => true,
+								'max_length' => 50,
+								'min_length' => 2
+							),
+						'email' => array(
+								'es_requerido' => true,
+								'es_email' => 'es_email',
+								'max_length' => 100
+							),
+						'telefono' => array(
+								'es_requerido' => true,
+								'max_length' => 50
+							),
+						'password' => array(
+								'es_requerido' => true,
+								'max_length' => 50,
+								'min_length' => 6,
+								'son_iguales' => array('password','passwordConfirm',
+													   'msj' => "La confirmación de la clave no coincide")
+							),
+						'passwordConfirm' => array(
+								'es_requerido' => true
+							)
+					);
+				$validar = new Validar();
+				$val = $validar->validar($datos,$reglas);
+				if ($val !== true){
+					return $this->view->json(array('success'=> false, 'errorMsj' => $val));
+				}
+				
 
 				$params =array(
 					':v_nombre' => $nombre,
@@ -106,6 +153,10 @@
 			}else{
 				return $this->view->json(array('success' => false));
 			}
+		}
+
+		public function formLogin(){
+			$this->view->formLogin();
 		}
 
 

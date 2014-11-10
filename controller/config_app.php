@@ -9,8 +9,13 @@
 
 		/* Clasificación de usuarios */
 		public static $USER_NO_LOGUEADO  = 0;
-		public static $USER_ADMIN        = 1;
-		public static $USER_LOGUEADO     = 2;
+		public static $USER_LOGUEADO     = 1;
+		public static $USER_ADMIN        = 2;
+
+		/* Clasificación de grupos de usuarios */
+		public static $GRUPO_USER_NO_LOGUEADO  = 'gNL';
+		public static $GRUPO_USER_LOGUEADO     = 'gL';
+		public static $GRUPO_USER_ADMIN        = 'gA';
 
 		/* Clasificacion de actions */
 		public static $ACTION            = 'action';
@@ -30,6 +35,7 @@
 		public static $ACTION_FORM_NUEVO_USUARIO_BY_AJAX = "form_nuevo_usuario_by_ajax";
 		public static $ACTION_ALTA_NUEVO_USUARIO_BY_AJAX = "alta_nuevo_usuario_by_ajax";
 		public static $ACTION_LOGOUT_BY_AJAX = "logout_by_ajax";
+		public static $ACTION_FORM_LOGIN     = "form_login";
 		
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";
@@ -41,6 +47,8 @@
 		public static $PATH_USER_ADMIN       = "/rol/user-admin";
 		public static $PATH_USER_NO_LOGUEADO = "/rol/user-no-logueado";
 		public static $PATH_USER_LOGUEADO    = "/rol/user-logueado";
+
+	
 
 	}
 

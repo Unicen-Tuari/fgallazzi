@@ -9,9 +9,9 @@
 		/**
 		 * Constructor
 		 * */
-		function __construct($pathUser=false,$nameUser=false)
+		function __construct()
 		{
-			parent::__construct($pathUser,$nameUser);
+			parent::__construct();
 			$this->addDir("./templates/home/");
 			$this->set("ACTION",ConfigApp::$ACTION);
 			$this->set("ACTION_PUBLICAR",ConfigApp::$ACTION_PUBLICAR);

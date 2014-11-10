@@ -9,6 +9,8 @@
 	 *  **/
 	
 	include_once "controller/config_app.php";
+	include_once "controller/acl_controller.php";
+	include_once "controller/registry.php";
 	include_once "controller/home_controller.php";
 	include_once "controller/producto_controller.php";
 	include_once "controller/categoria_controller.php";
@@ -17,7 +19,15 @@
 	include_once "controller/usuario_controller.php";
 
 	session_start();
-	
+
+	$aclController = AclController::getInstance();
+
+	if ($aclController->validarAcceso() === false){
+		header("Location: index.php?".ConfigApp::$ACTION."=".ConfigApp::$ACTION_HOME);
+		exit();
+	}
+	$aclController->setUser();
+
 	if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST ) || $_REQUEST[ConfigApp::$ACTION] == ConfigApp::$ACTION_HOME){
 		// Home del sitio
 		$homeController = new HomeController();
@@ -85,12 +95,19 @@
 				$usuarioController = new UsuarioController();
 				$usuarioController->logOutByAjax();	
 				break;
+			case ConfigApp::$ACTION_FORM_LOGIN:
+				$usuarioController = new UsuarioController();
+				$usuarioController->formLogin();	
+				break;
+
 			default:
 				echo "Pagina no encontrada";
 				break;
 		}
 
 	}
+
+
 
 
  ?>

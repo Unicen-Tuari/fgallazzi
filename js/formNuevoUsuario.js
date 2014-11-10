@@ -9,7 +9,15 @@ $(document).ready(function() {
 			if ('success' in data && data.success){
 				$('#modal-nuevo-usuario').modal('hide');
 				FORM_LOGIN_TRASTOS.show();
+			}else{
+				if ('errorMsj' in data){
+					SHOW_ERRORS.show('#form_nuevo_usuario',data.errorMsj);
+
+				}
 			}
+		},
+		beforeSubmit : function(){
+			SHOW_ERRORS.hide('#form_nuevo_usuario');
 		}
 	};
 
@@ -91,7 +99,7 @@ $(document).ready(function() {
 	  	}
 	});
 
-	$('#form_nuevo_usuario').ajaxForm();
+	$('#form_nuevo_usuario').ajaxForm(options);
 
 	
 });	

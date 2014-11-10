@@ -9,9 +9,9 @@
 		/**
 		 * Constructor
 		 * */
-		function __construct($pathUser=false)
+		function __construct()
 		{
-			parent::__construct($pathUser);
+			parent::__construct();
 			$this->addDir("./templates/carrito/");
 		}
 

@@ -17,7 +17,7 @@
 		{
 			parent::__construct();
 			$this->model = null;
-			$this->view = new HomeView($this->pathUser,$this->getDataSession('user'));
+			$this->view = new HomeView();
 			
 		}
 

@@ -12,11 +12,11 @@
 		/**
 		 * Constructor
 		 */
-		function __construct($pathUser=false,$nameUser=false)
+		function __construct()
 		{
 			$this->templateEng = new Smarty();
-			$this->set("pathUser",$pathUser);
-			$this->set("NOMBRE_USER",$nameUser);
+			$this->set("pathUser",Registry::get('pathUser'));
+			$this->set("NOMBRE_USER",Registry::get('nameUser'));
 			$this->addDir("./templates/layouts");
 		}
 
@@ -28,20 +28,16 @@
 
 		protected function set($name,$value){
 			$this->templateEng->assign($name,$value);
-			
-
 		}
 
 		protected function setParams($params){
 			foreach ($params as $key => $value){
 				$this->set($key,$value);
 			}
-
 		}
 
 		protected function render($file){
 			$this->templateEng->display($file);
-
 		}
 
 		protected function addDir($path){

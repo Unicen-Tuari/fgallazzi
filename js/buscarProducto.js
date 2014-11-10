@@ -1,6 +1,9 @@
 
 
 $(document).ready(function() {
+	
+	LOADING.show();
+
 	var txt_buscar = $('#buscador #buscar_txt').val();
 
 	var objTpl;
@@ -32,7 +35,7 @@ $(document).ready(function() {
 
 	$.ajax({
 		url: 'index.php',
-		type: 'POST',
+		type: 'GET',
 		dataType: 'html',
 		data: {action: 'get_tmp_listado_by_ajax'},
 		success : function(data){
@@ -44,6 +47,7 @@ $(document).ready(function() {
 				data: {action : "get_all_productos_by_ajax", buscar_txt:txt_buscar},
 				success : function(data){
 					updateListado(data,objTpl,optionsTpl);
+					LOADING.hide();
 				}
 			});
 		}
@@ -56,6 +60,10 @@ $(document).ready(function() {
 		data : {action : "get_all_productos_by_ajax"},
 		success : function(data){
 			updateListado(data,objTpl,optionsTpl);
+			LOADING.hide();
+		},
+		beforeSubmit: function(arr, $form, options) { 
+			LOADING.show();
 		}
 	});
 	
@@ -85,5 +93,6 @@ function updateListado(data,objTpl,optionsTpl){
 		});
 		$("#listado_productos").append(objAux);
 	});
+	
 }
 

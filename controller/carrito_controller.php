@@ -15,7 +15,7 @@
 		{
 			parent::__construct();
 			$this->model = null;
-			$this->view = new CarritoView($this->pathUser);
+			$this->view = new CarritoView();
 			
 		}
 

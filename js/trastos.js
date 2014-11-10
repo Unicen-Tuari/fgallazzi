@@ -187,3 +187,23 @@ var DIALOG = {
 		$('#' + this.id).addClass('hidden');
 	}
 }
+
+var SHOW_ERRORS = {
+	show : function (form,errors){
+		$.each(errors,function(name,errormsj){
+			var element = $(form).find('[name="' + name + '"]').parent('div.marca');
+			if ($(element).find('span').length == 0 ){
+				span = $('span');
+				$(element).append(span);
+			}
+			$.each(errormsj, function(index, val) {
+				$(element).find('span').html(val);
+				$(element).removeClass('has-success').addClass('has-error');
+			});
+		});
+	},
+	hide : function (form){
+		$(form).find('div.marca').removeClass('has-error');
+
+	}
+}
