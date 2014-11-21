@@ -99,7 +99,10 @@
 				$usuarioController = new UsuarioController();
 				$usuarioController->formLogin();	
 				break;
-
+			case ConfigApp::$ACTION_INSERT_PRODUCTO_CARRITO_BY_AJAX:
+				$carritoController = new CarritoController();
+				$carritoController->insertarProductoAlCarritoByAjax();
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;

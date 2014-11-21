@@ -31,21 +31,19 @@
             </tr>  
           </thead>
           <tbody>
-            <tr>
-              <td>Bicicleta</td>
-              <td>Troy McClure</td>
-              <td>$3500</td>
-              <td>1</td>
-              <td>$3500</td>
-            </tr>
-            <tr>
-              <td>Moto 250 cc</td>
-              <td>Troy McClure</td>
-              <td>$15500</td>
-              <td>1</td>
-              <td>$15500</td>
-            </tr>
-            
+            {foreach from=$productos item = p}
+              <tr>
+                <td>{$p.v_nombre_producto}</td>
+              
+                <td>{$p.v_usuario}</td>
+              
+                <td>${$p.f_precio_unidad}</td>
+
+                <td>{$p.n_cantidad}</td>
+              
+                <td>${$p.n_cantidad * $p.f_precio_unidad}</td>
+              </tr>    
+            {/foreach}
           </tbody>
         </table>
       </div>

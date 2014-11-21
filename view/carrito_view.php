@@ -23,7 +23,8 @@
 		 * 
 		 * */
 		
-		public function carritoCompraByAjax(){
+		public function carritoCompraByAjax($params){
+			$this->setParams($params);
 			return $this->render($this->carritoModalTpl);
 		}
 	}

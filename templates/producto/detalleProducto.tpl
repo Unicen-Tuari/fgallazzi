@@ -33,7 +33,7 @@
 							
 						</div>
 						<p>{$data.v_descripcion}</p>
-						<button type="button" class="btn btn-primary btn-lg btn-comprar">Comprar</button>
+						<button type="button" class="btn btn-primary btn-lg btn-comprar" id = "btn-trastos-comprar" data-p = "{$data.id_producto}">Comprar</button>
 						
 						<div class="info-extra-detalle-producto">
 							<p>
@@ -68,7 +68,7 @@
 					{/foreach}
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-primary btn-lg btn-comprar">Comprar</button>
+			<button type="button" class="btn btn-primary btn-lg btn-comprar" id = "btn-trastos-comprar" data-p = "{$data.id_producto}">Comprar</button>
 		</div>
 	</div>
 
