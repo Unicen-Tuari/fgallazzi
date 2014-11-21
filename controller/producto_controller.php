@@ -121,6 +121,7 @@
 				if (!$info = $this->getDataRequest('info')){
 					throw new Exception("Error Processing Request", 1);
 				}
+				$id_usuario = $this->getDataSession('id');
 
 				$caracteristicas = $this->getDataRequest('caracteristicas');
 				
@@ -134,7 +135,7 @@
 					'f_precio' => $info['precio'],
 					'v_img_path' => 'img/'. $nombreFile,
 					'id_categoria' => $info['sub_categoria'],
-					'id_usuario' => 1);
+					'id_usuario' => $id_usuario);
 
 				$idProducto = $this->model->add($dataInfo);
 
