@@ -67,7 +67,12 @@
 				'carrito' => $carrito[0],
 				'productos' => $productos
 				);
-			$this->view->carritoCompraByAjax($params);
+			$html = $this->view->carritoCompraByAjax($params);
+			$json = array(
+				'success' => true,
+				'html' => $html
+				);
+			$this->view->json($json);
 		}
 
 		public function insertarProductoAlCarritoByAjax(){

@@ -70,20 +70,4 @@ $(document).ready(function() {
 	
 });	
 
-function getDataURI(field){
-	var uri = location.href;
-	var r;
-	uri = uri.split('?');
-	if (uri.length > 1){
-		uri = uri[1].split('&');
-		for (var i = 0 ; i < uri.length; i++){
-			r = uri[i].split('=');
-			if (r.length > 1){
-				if (r[0]==field){
-					return decodeURIComponent(r[1]);
-				}
-			}
-		}
-	}
-	return false;
-}
+

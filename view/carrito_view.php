@@ -25,7 +25,7 @@
 		
 		public function carritoCompraByAjax($params){
 			$this->setParams($params);
-			return $this->render($this->carritoModalTpl);
+			return $this->read($this->carritoModalTpl);
 		}
 	}
 

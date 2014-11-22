@@ -9,10 +9,14 @@ $(document).ready(function() {
 		data : {action:"login_by_ajax"},
 		success : function(data){
 			if ('success' in data && data.success){
-				var action = FORM_LOGIN_TRASTOS.getAction();
 				FORM_LOGIN_TRASTOS.hide();
+				//actualizar contenido html si fue seteado contents
+				if (FORM_LOGIN_TRASTOS.getContent()){
+					GET_CONTENTS.get();
+				}
+				//realizar accion, si fue seteado
+				var action = FORM_LOGIN_TRASTOS.getAction();
 				action();
-
 			}else {
 				FORM_LOGIN_TRASTOS.hide();
 				DIALOG.show('La combinación de usuario contraseña no es correcta');

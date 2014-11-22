@@ -40,6 +40,10 @@
 			$this->templateEng->display($file);
 		}
 
+		protected function read($file){
+			return $this->templateEng->fetch($file);
+		}
+
 		protected function addDir($path){
 			$d = $this->templateEng->getTemplateDir();
 			$d[] = $path;
@@ -53,6 +57,18 @@
 		
 		public function success($success){
 			$json = ($success) ? array ('success' => true) : array ('success' => false);
+			$this->json($json);
+		}
+
+		public function getContents(){
+
+			$tpl_navBar = 'content-nav-bar.tpl';
+			$navbar =  $this->templateEng->fetch($tpl_navBar);
+
+			$json = array(
+				'success' => true,
+				'contents' => array('content-navbartrastos' => $navbar)
+				);
 			$this->json($json);
 		}
 	}

@@ -17,6 +17,7 @@
 	include_once "controller/caracteristica_controller.php";
 	include_once "controller/carrito_controller.php";
 	include_once "controller/usuario_controller.php";
+	include_once "view/view_class.php";
 
 	session_start();
 
@@ -103,6 +104,10 @@
 				$carritoController = new CarritoController();
 				$carritoController->insertarProductoAlCarritoByAjax();
 				break;
+			case ConfigApp::$ACTION_GET_CONTENT_BY_AJAX:
+				$view = new View();
+				$view->getContents();
+				break;	
 			default:
 				echo "Pagina no encontrada";
 				break;

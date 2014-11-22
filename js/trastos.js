@@ -47,11 +47,21 @@ var MI_CARRITO_TRASTOS = {
 			$.ajax({
 				url: 'index.php',
 				type: 'POST',
-				dataType: 'html',
+				dataType: 'json',
 				data: {action: 'carrito_compra_by_ajax'},
 				success : function(data){
-					$('#content-carrito-compra').html(data).removeClass('hidden');
-					$('#modal-carrito').modal('show');
+					if ('success' in data && data.success){
+						$('#content-carrito-compra').html(data.html).removeClass('hidden');
+						$('#modal-carrito').modal('show');
+					}else if ('action' in data && data.action == "login"){
+						FORM_LOGIN_TRASTOS.setAction(function(){
+							MI_CARRITO_TRASTOS.show();
+						});
+						FORM_LOGIN_TRASTOS.setContent();
+						FORM_LOGIN_TRASTOS.show();
+					}else if ('info' in data ){
+						DIALOG.show(data.info);
+					}
 					LOADING.hide();
 				}
 			});
@@ -59,6 +69,8 @@ var MI_CARRITO_TRASTOS = {
 };
 
 function formLogin_onclick(){
+	FORM_LOGIN_TRASTOS.setContent();
+	FORM_LOGIN_TRASTOS.notAction();
 	FORM_LOGIN_TRASTOS.show();
 }
 	
@@ -67,7 +79,9 @@ var FORM_LOGIN_TRASTOS = {
 		window.location.href = "index.php";
 	},
 	action : null,
-	show : function(){	
+	contents : false,
+	not_action : false,
+	show : function(){
 		LOADING.show();
 		$('#content-form-login').empty();
 		$.ajax({
@@ -89,19 +103,36 @@ var FORM_LOGIN_TRASTOS = {
 		this.action = obj;
 	},
 	getAction : function(){
-		if (this.action != null){
-			var a = this.action;
-			this.action = null;
-			return a;
-		} else {
-			return this.actionDefault;
+		if (this.not_action == false){
+			if (this.action != null){
+				var a = this.action;
+				this.action = null;
+				return a;
+			} else {
+				return this.actionDefault;
+			}
+		}else{
+			this.not_action = false;
+			return function(){return};
 		}
+		
 	},
 	hide : function(){
 		$('#modal-login').modal('hide');
 		$('#modal-login').on('hidden.bs.modal', function (e) {
 			$('#content-form-login').addClass('hidden');
 		});
+	},
+	setContent : function(){
+		this.contents = true;
+	},
+	getContent : function(){
+		var c = this.contents;
+		this.contents = false;
+		return c;
+	},
+	notAction : function(){
+		this.not_action = true;
 	}
 }
 
@@ -137,7 +168,6 @@ function salir_onclick(){
 			if ('success' in data && data.success){
 				window.location.href = "index.php";
 			}
-
 		}
 	});
 }
@@ -206,4 +236,69 @@ var SHOW_ERRORS = {
 		$(form).find('div.marca').removeClass('has-error');
 
 	}
+}
+
+var GET_CONTENTS = {
+	contentDefault : 'content-navbartrastos',
+	contents : null,
+	get : function(){
+		if (this.contents != null){
+			this.get_content(contents);
+			this.contents = null;
+		}else {
+			this.get_content(this.contentDefault);
+		}
+	},
+	get_content : function(content) {
+		$.ajax({
+			url: 'index.php',
+			type: 'GET',
+			dataType: 'json',
+			data: {action: 'getcontent', content : content},
+			success : function(data){
+				if ('success' in data && data.success){
+					if ('contents' in data){
+						$.each(data.contents, function(k,v){
+							$('#' + k).html($(v).children());						
+						});
+					}
+				}
+			}
+		});
+	}
+}
+
+var FORM_LOGIN_TRASTOS_ATIPICO =  {
+	show : function(){
+		var next = encodeDataURI();
+		window.location.href = 'index.php?action=form_login&next=' + next;
+	}
+}
+
+function getDataURI(field){
+	var uri = location.href;
+	var r;
+	uri = uri.split('?');
+	if (uri.length > 1){
+		uri = uri[1].split('&');
+		for (var i = 0 ; i < uri.length; i++){
+			r = uri[i].split('=');
+			if (r.length > 1){
+				if (r[0]==field){
+					return decodeURIComponent(r[1]);
+				}
+			}
+		}
+	}
+	return false;
+}
+
+function encodeDataURI(){
+	var uri = location.href;
+	var r;
+	uri = uri.split('?');
+	if (uri.length > 1){
+		return encodeURIComponent(uri[1]);
+	}
+	return false;
 }

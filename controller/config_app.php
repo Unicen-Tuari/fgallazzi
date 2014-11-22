@@ -37,7 +37,8 @@
 		public static $ACTION_LOGOUT_BY_AJAX = "logout_by_ajax";
 		public static $ACTION_FORM_LOGIN     = "form_login";
 		public static $ACTION_INSERT_PRODUCTO_CARRITO_BY_AJAX = "insert_producto_carrito_by_ajax";
-		
+		public static $ACTION_GET_CONTENT_BY_AJAX = "getcontent";
+
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";
 		public static $ID_PRODUCTO           = "product";
@@ -45,9 +46,9 @@
 		public static $BUSCAR_TXT            = "buscar_txt";
 
 		/* Clasificación de carpetas para los distintos usuarios */
-		public static $PATH_USER_ADMIN       = "/rol/user-admin";
-		public static $PATH_USER_NO_LOGUEADO = "/rol/user-no-logueado";
-		public static $PATH_USER_LOGUEADO    = "/rol/user-logueado";
+		public static $PATH_USER_ADMIN       = "./rol/user-admin";
+		public static $PATH_USER_NO_LOGUEADO = "./rol/user-no-logueado";
+		public static $PATH_USER_LOGUEADO    = "./rol/user-logueado";
 
 		/* Tiempo de vida del carrito esperando por confirmacion de compra */
 		const VIDA_CARRITO =  7200; // dos horas 

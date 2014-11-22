@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	{include file="nav-bar/navbar.tpl"}
+	{include file="nav-bar/navbar-atipico.tpl"}
 
 
 	{block name=body}{/block}

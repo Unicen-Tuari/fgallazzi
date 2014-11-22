@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	{include file="nav-bar$pathUser/navbar.tpl"}
+	{include file="nav-bar/navbar.tpl"}
 
 
 	{block name=body}{/block}
