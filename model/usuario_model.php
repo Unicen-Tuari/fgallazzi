@@ -23,7 +23,7 @@
 		
 		private $sql_isUsuario = "SELECT count(1) as count FROM usuario WHERE v_email = :v_email and v_clave = :v_clave ";
 
-		private $sql_getByUsuarioPass = "SELECT id_usuario, v_nombre, v_apellido FROM usuario 
+		private $sql_getByUsuarioPass = "SELECT id_usuario, v_nombre, v_apellido, b_admin FROM usuario 
 		                                   		WHERE v_email = :v_email and v_clave = :v_clave ";
 		
 		public function getTabla(){

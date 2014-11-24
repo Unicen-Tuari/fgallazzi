@@ -53,7 +53,7 @@
 					$dataSession = array(					
 						'id'   => $user[0]['id_usuario'],
 						'user' => $user[0]['v_nombre'] . " " . $user[0]['v_apellido'],
-						'rol'  => ConfigApp::$USER_LOGUEADO
+						'rol'  => ($user[0]['b_admin']) ? ConfigApp::$USER_ADMIN : ConfigApp::$USER_LOGUEADO
 					);
 
 					$this->setDataSession($dataSession);

@@ -23,10 +23,18 @@
 	session_start();
 
 	$aclController = AclController::getInstance();
-
+	// de no tener acceso, 
+	// identificar el request:
+	// si es por ajax devolver un success false
+	// caso contrario un redirect al home
 	if ($aclController->validarAcceso() === false){
-		header("Location: index.php?".ConfigApp::$ACTION."=".ConfigApp::$ACTION_HOME);
-		exit();
+		if ($aclController->isAjax()){
+			$view = new View();
+			return $view->success(false);
+		}else{
+			header("Location: index.php?".ConfigApp::$ACTION."=".ConfigApp::$ACTION_HOME);
+			exit();
+		}
 	}
 	$aclController->setUser();
 
