@@ -13,6 +13,9 @@
 		{
 			parent::__construct();
 			$this->addDir("./templates/carrito/");
+			$this->set("ACTION",ConfigApp::$ACTION);
+			$this->set("ACTION_DETALLE",ConfigApp::$ACTION_DETALLE);
+			$this->set("ID_PRODUCTO",ConfigApp::$ID_PRODUCTO);
 		}
 
 		private $carritoModalTpl = "modal_carrito.tpl";

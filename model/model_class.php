@@ -24,7 +24,7 @@
 		private $pass = "debianfran";
 		private $host = "localhost";
 		protected $conn = null;
-
+		private $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 		/**
 		 * Metodos
 		 */
@@ -34,7 +34,7 @@
 		*/
 		protected function coneccion()	{
 			try{
-				$this->conn = new PDO("mysql:host=$this->host;dbname=$this->db",$this->user,$this->pass);
+				$this->conn = new PDO("mysql:host=$this->host;dbname=$this->db",$this->user,$this->pass,$this->opciones);
 			}catch(PDOException $pe){
 				die('Error de conexion, Mensaje: ' -$pe->getMessage());
 			}
@@ -91,6 +91,12 @@
 			}
 			/* Si fue exitoso retorna el ID */
 			return $conn->lastInsertId();
+		}
+
+		function nowDB(){
+			$sql = "select current_timestamp() as now ";
+			$now = $this->query($sql);
+			return $now[0]['now'];
 		}
 
 		/**

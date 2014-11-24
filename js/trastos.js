@@ -65,6 +65,9 @@ var MI_CARRITO_TRASTOS = {
 					LOADING.hide();
 				}
 			});
+	},
+	hide : function(){
+		$('#modal-carrito').modal('hide');
 	}
 };
 
@@ -155,7 +158,6 @@ function formRegistrarme_onclick(){
 
 			}
 		});
-
 }
 
 function salir_onclick(){
@@ -197,6 +199,7 @@ var LOADING = {
 var DIALOG = {
 	id : "content-dialog",
 	dialog : null,
+	buttons : [],
 	show : function(mensaje){
 		if (this.dialog == null){
 			this.dialog = $('#' + this.id + " #modal-dialog");
@@ -209,12 +212,33 @@ var DIALOG = {
 		if (mensaje){
 			this.dialog.find('.modal-body p').html(mensaje);
 		}
+		this.dialog.find('div.modal-footer').empty();
+		if (this.buttons.length > 0){
+			for (var i = 0; i < this.buttons.length; i++){
+				this.dialog.find('div.modal-footer').append(this.buttons[i]);
+			}
+			this.buttons = [];
+		}else{
+			this.dialog.find('div.modal-footer').append(this.getBtnDefault());
+		}
+		
 		this.dialog.modal('show');
 	},
 	hide : function(){
 		this.dialog.modal('hide');
 		this.dialog.find('.modal-body p').html('');
 		$('#' + this.id).addClass('hidden');
+	},
+	addButton : function(name,action){
+		var btn = $('<button></button>').addClass('btn btn-default').text(name);
+		btn.click(action);
+		this.buttons.push(btn);
+	},
+	getBtnDefault : function(){
+		var btn = $('<button></button>').addClass('btn btn-default');
+		btn.attr('data-dismiss','modal');
+		btn.text('Ok');
+		return btn;
 	}
 }
 

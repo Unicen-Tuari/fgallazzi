@@ -1,5 +1,6 @@
 <?php 
 	//sleep(1);
+	//usleep(100000);
 	/**
 	 * Enrutador de peticiones
 	 * Segun el pedido, instanciara su correspondiente Controlador.
@@ -107,7 +108,15 @@
 			case ConfigApp::$ACTION_GET_CONTENT_BY_AJAX:
 				$view = new View();
 				$view->getContents();
-				break;	
+				break;
+			case ConfigApp::$ACTION_UPDATE_CARRITO_BY_AJAX:
+				$carritoController = new CarritoController();
+				$carritoController->updateCarritoByAjax();
+				break;
+			case ConfigApp::$ACTION_CONFIRMAR_COMPRA_BY_AJAX:
+				$carritoController = new CarritoController();
+				$carritoController->confirmarCompra();
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;

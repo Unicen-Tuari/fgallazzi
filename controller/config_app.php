@@ -38,7 +38,9 @@
 		public static $ACTION_FORM_LOGIN     = "form_login";
 		public static $ACTION_INSERT_PRODUCTO_CARRITO_BY_AJAX = "insert_producto_carrito_by_ajax";
 		public static $ACTION_GET_CONTENT_BY_AJAX = "getcontent";
-
+		public static $ACTION_UPDATE_CARRITO_BY_AJAX = "updatecarritobyajax";
+		public static $ACTION_CONFIRMAR_COMPRA_BY_AJAX = "confirmar_compra_by_ajax";
+		
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";
 		public static $ID_PRODUCTO           = "product";
@@ -51,7 +53,7 @@
 		public static $PATH_USER_LOGUEADO    = "./rol/user-logueado";
 
 		/* Tiempo de vida del carrito esperando por confirmacion de compra */
-		const VIDA_CARRITO =  7200; // dos horas 
+		const VIDA_CARRITO =  72000; // dos horas 
 
 	}
 

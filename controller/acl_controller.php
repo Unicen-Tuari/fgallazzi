@@ -114,7 +114,9 @@
 				array ('action' => ConfigApp::$ACTION_LOGOUT_BY_AJAX, 'gNL' => 0, 'gL' => 1, 'gA' => 1),
 				array ('action' => ConfigApp::$ACTION_FORM_LOGIN, 'gNL' => 1, 'gL' => 0, 'gA' => 0),
 				array ('action' => ConfigApp::$ACTION_INSERT_PRODUCTO_CARRITO_BY_AJAX, 'gNL' => 0, 'gL' => 1, 'gA' => 0),
-				array ('action' => ConfigApp::$ACTION_GET_CONTENT_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0)
+				array ('action' => ConfigApp::$ACTION_GET_CONTENT_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0),
+				array ('action' => ConfigApp::$ACTION_UPDATE_CARRITO_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0),
+				array ('action' => ConfigApp::$ACTION_CONFIRMAR_COMPRA_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0)
 			);
 
 			foreach ($actions as $a) {

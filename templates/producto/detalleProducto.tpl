@@ -3,6 +3,7 @@
 {extends file="layout-trastos.tpl"}
 
 {block name=scriptJS}
+	<script type="text/javascript" src="js/carrito.js" ></script>
 	<script type="text/javascript" src="js/detalle_producto.js" ></script>
 {/block}
 

@@ -1,6 +1,6 @@
 <?php 
 	// Libreria de Smarty
-		require_once "libs/Smarty.class.php";
+		require_once "libs/Smarty/Smarty.class.php";
 		include_once "controller/config_app.php";
 	/**
 	* Clase Padre View
@@ -15,6 +15,7 @@
 		function __construct()
 		{
 			$this->templateEng = new Smarty();
+
 			$this->set("pathUser",Registry::get('pathUser'));
 			$this->set("NOMBRE_USER",Registry::get('nameUser'));
 			$this->addDir("./templates/layouts");
@@ -51,7 +52,7 @@
 		}
 
 		public function json($data){
-			echo json_encode($data);
+			echo json_encode($data, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 			exit();
 		}
 		
@@ -71,6 +72,19 @@
 				);
 			$this->json($json);
 		}
+
+		 function json_last_error_msg() {
+        static $errors = array(
+            JSON_ERROR_NONE             => null,
+            JSON_ERROR_DEPTH            => 'Maximum stack depth exceeded',
+            JSON_ERROR_STATE_MISMATCH   => 'Underflow or the modes mismatch',
+            JSON_ERROR_CTRL_CHAR        => 'Unexpected control character found',
+            JSON_ERROR_SYNTAX           => 'Syntax error, malformed JSON',
+            JSON_ERROR_UTF8             => 'Malformed UTF-8 characters, possibly incorrectly encoded'
+        );
+        $error = json_last_error();
+        return array_key_exists($error, $errors) ? $errors[$error] : "Unknown error ({$error})";
+    }
 	}
 
  ?>
