@@ -47,7 +47,7 @@ create table usuario (
 	v_nombre varchar(100) not null,
 	v_apellido varchar(100) not null,
 	v_telefono varchar(100) not null,
-	b_admin boolean default false,
+	b_admin boolean not null default false,
 	primary key (id_usuario)
 );
 
