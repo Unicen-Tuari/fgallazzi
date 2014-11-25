@@ -3,6 +3,7 @@
 	include_once "view/usuario_view.php";
 	include_once "model/usuario_model.php";
 	include_once "validar_class.php";
+	include_once "paginador_controller.php";
 
 	/**
 	 * UsuarioController
@@ -159,6 +160,37 @@
 			$this->view->formLogin();
 		}
 
+		/**
+		 * FUNCIONES ADMIN
+		 * */
+
+		public function listAllUsuarios(){
+			//$data = $this->model->listAllUsuarios();
+			$this->view->listAllUsuarios();
+		}
+		
+		public function listAllUsuariosByAjax(){
+			$paginador = new PaginadorController();
+			$paginador->setTabla('usuario');
+			$paginador->setCols(array('id_usuario','v_nombre','v_apellido','v_telefono','v_email'));
+			$paginador->setCant($this->getDataRequest('cant'));
+			//$paginador->setWhere(array('id_usuario'=>2));
+			$paginador->setPage($this->getDataRequest('page'));
+			$paginador->setTxt($this->getDataRequest('txt'));
+			
+			$data = $paginador->getPage();
+
+			$cantPages = $paginador->getCountPages();
+			$page = $paginador->getNPage();
+
+			$json = array(
+				'success' => true,
+				'rows' => $data,
+				'cant_pages' => $cantPages,
+				'page' => $page,
+				);
+			return $this->view->json($json);
+		}
 
 	}
 

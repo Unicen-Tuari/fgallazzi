@@ -37,7 +37,7 @@
 			}
 		}
 
-		protected function render($file){
+		public function render($file){
 			$this->templateEng->display($file);
 		}
 

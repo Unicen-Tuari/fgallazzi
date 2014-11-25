@@ -4,7 +4,7 @@
 	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sistema <b class="caret"></b></a>
 		<ul class="dropdown-menu">
-			<li><a href="#">Usuarios</a></li>
+			<li><a href="index.php?action=list_all_usuarios">Usuarios</a></li>
 		</ul>
 	</li>
 	<li class="dropdown">

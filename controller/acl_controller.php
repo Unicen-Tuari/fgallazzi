@@ -116,7 +116,10 @@
 				array ('action' => ConfigApp::$ACTION_INSERT_PRODUCTO_CARRITO_BY_AJAX, 'gNL' => 0, 'gL' => 1, 'gA' => 0),
 				array ('action' => ConfigApp::$ACTION_GET_CONTENT_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 1),
 				array ('action' => ConfigApp::$ACTION_UPDATE_CARRITO_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0),
-				array ('action' => ConfigApp::$ACTION_CONFIRMAR_COMPRA_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0)
+				array ('action' => ConfigApp::$ACTION_CONFIRMAR_COMPRA_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1)
+
 			);
 
 			foreach ($actions as $a) {
@@ -132,7 +135,8 @@
 				array ('action' => ConfigApp::$ACTION_CARGAR_PUBLICACION, 'grupo' => 'gNL' , 'requiere' => 'login'),
 				array ('action' => ConfigApp::$ACTION_DETALLE, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
 				array ('action' => ConfigApp::$ACTION_INSERT_PRODUCTO_CARRITO_BY_AJAX, 'grupo' => 'gNL' , 'requiere' => 'login'),
-				array ('action' => ConfigApp::$ACTION_GET_CARRITO_BY_AJAX, 'grupo' => 'gNL' , 'requiere' => 'login')
+				array ('action' => ConfigApp::$ACTION_GET_CARRITO_BY_AJAX, 'grupo' => 'gNL' , 'requiere' => 'login'),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN)
 			);
 
 			foreach ($actions as $a) {

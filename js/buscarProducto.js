@@ -46,7 +46,7 @@ $(document).ready(function() {
 				dataType: 'json',
 				data: {action : "get_all_productos_by_ajax", buscar_txt:txt_buscar},
 				success : function(data){
-					updateListado(data,objTpl,optionsTpl);
+					updateListado(data.productos,objTpl,optionsTpl,'listado_productos');
 					LOADING.hide();
 				}
 			});
@@ -59,7 +59,7 @@ $(document).ready(function() {
 		dataType : "json",
 		data : {action : "get_all_productos_by_ajax"},
 		success : function(data){
-			updateListado(data,objTpl,optionsTpl);
+			updateListado(data.productos,objTpl,optionsTpl,'listado_productos');
 			LOADING.hide();
 		},
 		beforeSubmit: function(arr, $form, options) { 
@@ -69,30 +69,5 @@ $(document).ready(function() {
 	
 });	
 
-function updateListado(data,objTpl,optionsTpl){
-	var objAux = null;
-	$("#listado_productos").empty();
-	$.each(data.productos,function(k,v){
-		objAux = objTpl.clone();
-		$.each(optionsTpl, function(tag, values) {
-			$.each(values,function(attr,val){
-				if ( attr != 'text'){
-					var a = $(objAux).find('[tag="'+tag+'"]').attr(attr);
-					if (a == undefined){
-						a = v[val];
-					}else{
-						a = a.replace(val,v[val]);
-					}
-					$(objAux).find('[tag="'+tag+'"]').attr(attr,a);
-				}else{
-					var t = $(objAux).find('[tag="'+tag+'"]').html();
-					t = t.replace(val,v[val]);
-					$(objAux).find('[tag="'+tag+'"]').html(t);
-				}
-			});
-		});
-		$("#listado_productos").append(objAux);
-	});
-	
-}
+
 

@@ -4,7 +4,7 @@
 	/**
 	* Clase Padre Model
 	*/
-	abstract class Model 
+	class Model 
 	{
 		/**
 		 * Contructor
@@ -13,7 +13,7 @@
 		{
 			
 		}
-		abstract function getTabla();
+		//abstract function getTabla();
 
 		/**
 		 * Atributos
@@ -69,7 +69,7 @@
 				$q->execute($param);
 			}
 			if(!$q){
-			  die("Error al ejecutar una consulta, Mensaje: ". $conn->errorInfo());
+			  die("Error al ejecutar una consulta, Mensaje: ". $conn->errorInfo() . $sql);
 			}
 			return $q->fetchAll(PDO::FETCH_ASSOC);
 		}

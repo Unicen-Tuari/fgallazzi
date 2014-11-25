@@ -406,3 +406,40 @@ transform:scale(0.5, 1);
 	cursor: pointer;
 	color : red;
 }
+
+/**tablas*/
+
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th{
+	background-color: rgb(205, 219, 241);
+}
+
+/**admin**/
+.catainer-admin{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(250, 250, 250);
+	padding-top: 50px;
+}
+
+.panel-admin{
+	margin-top: 50px;
+}
+
+.action-table-admin{
+	font-size: 12px;
+}
+.action-table-admin i:hover{
+	cursor:pointer;
+}
+
+.action-delete {
+	color : red;
+}
+.action-edit{
+	color : blue;
+}
+
+.action-ver{
+	color : green;
+}

@@ -125,6 +125,14 @@
 				$carritoController = new CarritoController();
 				$carritoController->confirmarCompra();
 				break;
+			case ConfigApp::$ACTION_LIST_ALL_USUARIOS:
+				$usuarioController = new UsuarioController();
+				$usuarioController->listAllUsuarios();
+				break;
+			case ConfigApp::$ACTION_LIST_ALL_USUARIOS_BY_AJAX:
+				$usuarioController = new UsuarioController();
+				$usuarioController->listAllUsuariosByAjax();
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;

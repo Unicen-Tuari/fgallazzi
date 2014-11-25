@@ -37,6 +37,17 @@
 		public function formLogin(){
 			return $this->render($this->formLoginTpl);
 		}
+
+		/**
+		 * FUNCIONES ADMIN
+		 * */
+		private $listAllUsuariosTpl = "list_all_usuarios.tpl";
+
+		public function listAllUsuarios(){
+			$this->set('title','Usuarios : Trastos');
+			$this->render($this->listAllUsuariosTpl);
+		}
+
 	}
 
 

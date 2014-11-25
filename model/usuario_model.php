@@ -26,6 +26,8 @@
 		private $sql_getByUsuarioPass = "SELECT id_usuario, v_nombre, v_apellido, b_admin FROM usuario 
 		                                   		WHERE v_email = :v_email and v_clave = :v_clave ";
 		
+		private $sql_listAllUsuarios = "SELECT * from usuario ";
+
 		public function getTabla(){
 			return $this->tabla;
 		}
@@ -45,12 +47,18 @@
 
 		public function isUsuario($params){
 			$c = $this->query($this->sql_isUsuario, $params);
-			//var_dump($c);exit();
 			return (isset($c[0]['count']) && $c[0]['count'] == 1 ) ? true : false;
 		}
 
 		public function getByUsuarioPass($params){
 			return $this->query($this->sql_getByUsuarioPass,$params);
+		}
+
+		/**
+		 * FUNCIONES ADMIN
+		 * */
+		public function listAllUsuarios($offset = 0, $limit =0){
+			return $this->query($this->sql_listAllUsuarios);
 		}
 	}
 

@@ -40,7 +40,9 @@
 		public static $ACTION_GET_CONTENT_BY_AJAX = "getcontent";
 		public static $ACTION_UPDATE_CARRITO_BY_AJAX = "updatecarritobyajax";
 		public static $ACTION_CONFIRMAR_COMPRA_BY_AJAX = "confirmar_compra_by_ajax";
-		
+		public static $ACTION_LIST_ALL_USUARIOS = "list_all_usuarios";
+		public static $ACTION_LIST_ALL_USUARIOS_BY_AJAX = "list_all_usuarios_by_ajax";
+
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";
 		public static $ID_PRODUCTO           = "product";
