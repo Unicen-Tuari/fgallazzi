@@ -138,7 +138,8 @@
 				array ('action' => ConfigApp::$ACTION_DETALLE, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
 				array ('action' => ConfigApp::$ACTION_INSERT_PRODUCTO_CARRITO_BY_AJAX, 'grupo' => 'gNL' , 'requiere' => 'login'),
 				array ('action' => ConfigApp::$ACTION_GET_CARRITO_BY_AJAX, 'grupo' => 'gNL' , 'requiere' => 'login'),
-				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN)
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_PRODUCTOS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN)
 			);
 
 			foreach ($actions as $a) {
