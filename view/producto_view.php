@@ -70,6 +70,15 @@
 			$this->render($this->listadoProductoTpl);
 
 		}
+		/**
+		 * FUNCIONES ADMIN
+		 * */
+		private $listAllProductosTpl = "list_all_productos.tpl";
+
+		public function listAllProductos(){
+			$this->set('title','Productos : Trastos');
+			$this->render($this->listAllProductosTpl);
+		}
 	}
 
 

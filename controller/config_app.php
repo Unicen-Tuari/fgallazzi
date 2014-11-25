@@ -42,6 +42,8 @@
 		public static $ACTION_CONFIRMAR_COMPRA_BY_AJAX = "confirmar_compra_by_ajax";
 		public static $ACTION_LIST_ALL_USUARIOS = "list_all_usuarios";
 		public static $ACTION_LIST_ALL_USUARIOS_BY_AJAX = "list_all_usuarios_by_ajax";
+		public static $ACTION_LIST_ALL_PRODUCTOS = "list_all_productos";
+		public static $ACTION_LIST_ALL_PRODUCTOS_BY_AJAX = "list_all_productos_by_ajax";
 
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";

@@ -133,6 +133,14 @@
 				$usuarioController = new UsuarioController();
 				$usuarioController->listAllUsuariosByAjax();
 				break;
+			case ConfigApp::$ACTION_LIST_ALL_PRODUCTOS:
+				$productoController = new ProductoController();
+				$productoController->listAllProductos();
+				break;
+			case ConfigApp::$ACTION_LIST_ALL_PRODUCTOS_BY_AJAX:
+				$productoController = new ProductoController();
+				$productoController->listAllProductosByAjax();
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;

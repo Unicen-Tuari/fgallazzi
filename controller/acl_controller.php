@@ -118,7 +118,9 @@
 				array ('action' => ConfigApp::$ACTION_UPDATE_CARRITO_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0),
 				array ('action' => ConfigApp::$ACTION_CONFIRMAR_COMPRA_BY_AJAX,'gNL' => 0, 'gL' => 1, 'gA' => 0),
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
-				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1)
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_PRODUCTOS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_PRODUCTOS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1)
 
 			);
 

@@ -4,6 +4,7 @@
 	include_once "model/categoria_model.php";
 	include_once "model/producto_model.php";
 	include_once "view/producto_view.php";
+	include_once "paginador_controller.php";
 
 	/**
 	 * HomeController
@@ -282,6 +283,40 @@
 		/*llama a el procedimiento de la base para incrementar el nVisitado del producto*/
 		private function setVisitados($id_producto){
 			$this->model->setVisitados($id_producto);
+		}
+
+
+
+		/**
+		 * FUNCIONES ADMIN
+		 * */
+
+		public function listAllProductos(){
+			//$data = $this->model->listAllUsuarios();
+			$this->view->listAllProductos();
+		}
+		
+		public function listAllProductosByAjax(){
+			$paginador = new PaginadorController();
+			$paginador->setTabla('view_producto');
+			$paginador->setCols(array('id_producto','v_nombre','v_descripcion','f_precio','v_nombre_vendedor','n_visitado'));
+			$paginador->setCant($this->getDataRequest('cant'));
+			//$paginador->setWhere(array('id_usuario'=>2));
+			$paginador->setPage($this->getDataRequest('page'));
+			$paginador->setTxt($this->getDataRequest('txt'));
+			
+			$data = $paginador->getPage();
+
+			$cantPages = $paginador->getCountPages();
+			$page = $paginador->getNPage();
+
+			$json = array(
+				'success' => true,
+				'rows' => $data,
+				'cant_pages' => $cantPages,
+				'page' => $page,
+				);
+			return $this->view->json($json);
 		}
 		
 	}
