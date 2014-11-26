@@ -8,6 +8,7 @@ function Buscador() {
 	this.action ="";
 	this.url = "index.php";
 	this.txt = "";
+	this.data= {};
 	var that = this;
 	this.next = function(){
 		this.page += 1;
@@ -35,6 +36,9 @@ function Buscador() {
 			cant : that.cant,
 			txt  : that.txt
 		}
+		$.each(that.data,function(k,v){
+			params[k] = v;
+		});
 		$.ajax({
 			url: that.url,
 			type: 'POST',

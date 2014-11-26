@@ -2,7 +2,7 @@
 
 create or replace view view_categorias_pricipales as (
 select id_categoria, v_descripcion from categoria
-   where  id_categoria = id_categoria_padre 
+   where  id_categoria = id_categoria_padre OR id_categoria_padre is null
    order by v_descripcion ASC);
 
 create or replace view view_top_visitados as (

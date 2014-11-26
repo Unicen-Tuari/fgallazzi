@@ -44,6 +44,14 @@
 		public static $ACTION_LIST_ALL_USUARIOS_BY_AJAX = "list_all_usuarios_by_ajax";
 		public static $ACTION_LIST_ALL_PRODUCTOS = "list_all_productos";
 		public static $ACTION_LIST_ALL_PRODUCTOS_BY_AJAX = "list_all_productos_by_ajax";
+		public static $ACTION_LIST_ALL_CATEGORIAS = "list_all_categorias";
+		public static $ACTION_LIST_ALL_CATEGORIAS_BY_AJAX = "list_all_categorias_by_ajax";
+		public static $ACTION_LIST_ALL_SUBCATEGORIAS = "list_all_subcategorias";
+		public static $ACTION_LIST_ALL_SUBCATEGORIAS_BY_AJAX = "list_all_sub_categorias_by_ajax";
+		public static $ACTION_NEW_CATEGORIA = "new_categoria";
+		public static $ACTION_EDIT_CATEGORIA = "edit_categoria";
+		public static $ACTION_BAJA_CATEGORIA_BY_AJAX = "baja_categoria_by_ajax";
+		
 
 		/* Clasificación de ID'S */
 		public static $ID_CATEGORIA          = "categoria";

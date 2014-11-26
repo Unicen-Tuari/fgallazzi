@@ -120,8 +120,14 @@
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_PRODUCTOS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
-				array ('action' => ConfigApp::$ACTION_LIST_ALL_PRODUCTOS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1)
-
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_PRODUCTOS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_CATEGORIAS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_CATEGORIAS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_SUBCATEGORIAS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_SUBCATEGORIAS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_NEW_CATEGORIA,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_EDIT_CATEGORIA,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_BAJA_CATEGORIA_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1)
 			);
 
 			foreach ($actions as $a) {
@@ -139,7 +145,11 @@
 				array ('action' => ConfigApp::$ACTION_INSERT_PRODUCTO_CARRITO_BY_AJAX, 'grupo' => 'gNL' , 'requiere' => 'login'),
 				array ('action' => ConfigApp::$ACTION_GET_CARRITO_BY_AJAX, 'grupo' => 'gNL' , 'requiere' => 'login'),
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_USUARIOS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
-				array ('action' => ConfigApp::$ACTION_LIST_ALL_PRODUCTOS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN)
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_PRODUCTOS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_CATEGORIAS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_SUBCATEGORIAS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
+				array ('action' => ConfigApp::$ACTION_NEW_CATEGORIA, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
+				array ('action' => ConfigApp::$ACTION_EDIT_CATEGORIA, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN)
 			);
 
 			foreach ($actions as $a) {

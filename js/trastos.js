@@ -22,13 +22,12 @@ function marcarActiveMenu(url){
 		for (var i = 0; i < uri.length; i++) {
 			var param = uri[i].split('=');
 			if (param.length > 1){
-				if (param[0] == 'action'){
+				if (param[0] == 'action' || param[0] == 'mark' ){
 					var active = $('#navbar-trastos li').find("a[href*='"+param[1]+"']").parent('li').addClass('active');
 					var dropdown = active.parents('li.dropdown');
 					if (dropdown.length > 0){
 						dropdown.addClass('active');
 					}
-					return;
 				}
 			}
 		}

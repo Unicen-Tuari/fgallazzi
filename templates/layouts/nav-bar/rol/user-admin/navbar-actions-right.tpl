@@ -6,6 +6,7 @@
 		<ul class="dropdown-menu">
 			<li><a href="index.php?action=list_all_usuarios">Usuarios</a></li>
 			<li><a href="index.php?action=list_all_productos">Productos</a></li>
+			<li><a href="index.php?action=list_all_categorias">Categorías</a></li>
 		</ul>
 	</li>
 	<li class="dropdown">

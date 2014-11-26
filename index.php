@@ -141,6 +141,34 @@
 				$productoController = new ProductoController();
 				$productoController->listAllProductosByAjax();
 				break;
+			case ConfigApp::$ACTION_LIST_ALL_CATEGORIAS:
+				$categoriaController = new CategoriaController();
+				$categoriaController->listAllCategorias();
+				break;
+			case ConfigApp::$ACTION_LIST_ALL_CATEGORIAS_BY_AJAX:
+				$categoriaController = new CategoriaController();
+				$categoriaController->listAllCategoriasByAjax();
+				break;
+			case ConfigApp::$ACTION_LIST_ALL_SUBCATEGORIAS:
+				$categoriaController = new CategoriaController();
+				$categoriaController->listAllSubCategorias();
+				break;
+			case ConfigApp::$ACTION_LIST_ALL_SUBCATEGORIAS_BY_AJAX:
+				$categoriaController = new CategoriaController();
+				$categoriaController->listAllSubCategoriasByAjax();
+				break;
+			case ConfigApp::$ACTION_NEW_CATEGORIA:
+				$categoriaController = new CategoriaController();
+				$categoriaController->newCategoria();
+				break;
+			case ConfigApp::$ACTION_EDIT_CATEGORIA:
+				$categoriaController = new CategoriaController();
+				$categoriaController->editCategoria();
+				break;
+			case ConfigApp::$ACTION_BAJA_CATEGORIA_BY_AJAX:
+				$categoriaController = new CategoriaController();
+				$categoriaController->bajaCategoriaByAjax();
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;
