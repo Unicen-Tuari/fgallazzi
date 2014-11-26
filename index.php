@@ -169,6 +169,14 @@
 				$categoriaController = new CategoriaController();
 				$categoriaController->bajaCategoriaByAjax();
 				break;
+			case ConfigApp::$ACTION_LIST_ALL_COMPRAS:
+				$carritoController = new CarritoController();
+				$carritoController->listAllCompras();
+				break;
+			case ConfigApp::$ACTION_LIST_ALL_COMPRAS_BY_AJAX:
+				$carritoController = new CarritoController();
+				$carritoController->listAllComprasByAjax();
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;

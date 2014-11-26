@@ -5,6 +5,7 @@
 	include_once "model/carrito_model.php";
 	include_once "controller/mail_controller.php";
 	include_once "view/mails_view.php";
+	include_once "paginador_controller.php";
 
 	/**
 	 * CarritoController
@@ -192,6 +193,37 @@
 			    } 
 			}
 			return $id_carrito;
+		}
+
+		/**
+		 * FUNCIONES ADMIN
+		 * */
+
+		public function listAllCompras(){
+			$this->view->listAllCompras();
+		}
+		
+		public function listAllComprasByAjax(){
+			$paginador = new PaginadorController();
+			$paginador->setTabla('view_compras');
+			$paginador->setCols(array('id_carrito','cantTotalUnidades','montoTotal','vFecha','vUsuario'));
+			$paginador->setCant($this->getDataRequest('cant'));
+			//$paginador->setWhere(array('id_usuario'=>2));
+			$paginador->setPage($this->getDataRequest('page'));
+			$paginador->setTxt($this->getDataRequest('txt'));
+			
+			$data = $paginador->getPage();
+
+			$cantPages = $paginador->getCountPages();
+			$page = $paginador->getNPage();
+
+			$json = array(
+				'success' => true,
+				'rows' => $data,
+				'cant_pages' => $cantPages,
+				'page' => $page,
+				);
+			return $this->view->json($json);
 		}
 	}
 

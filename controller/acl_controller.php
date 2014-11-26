@@ -127,7 +127,10 @@
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_SUBCATEGORIAS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
 				array ('action' => ConfigApp::$ACTION_NEW_CATEGORIA,'gNL' => 0, 'gL' => 0, 'gA' => 1),
 				array ('action' => ConfigApp::$ACTION_EDIT_CATEGORIA,'gNL' => 0, 'gL' => 0, 'gA' => 1),
-				array ('action' => ConfigApp::$ACTION_BAJA_CATEGORIA_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1)
+				array ('action' => ConfigApp::$ACTION_BAJA_CATEGORIA_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_COMPRAS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_COMPRAS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1)
+				
 			);
 
 			foreach ($actions as $a) {
@@ -149,7 +152,9 @@
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_CATEGORIAS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_SUBCATEGORIAS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
 				array ('action' => ConfigApp::$ACTION_NEW_CATEGORIA, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
-				array ('action' => ConfigApp::$ACTION_EDIT_CATEGORIA, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN)
+				array ('action' => ConfigApp::$ACTION_EDIT_CATEGORIA, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN),
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_COMPRAS, 'grupo' => 'gNL' , 'requiere' => ConfigApp::$ACTION_FORM_LOGIN)
+
 			);
 
 			foreach ($actions as $a) {

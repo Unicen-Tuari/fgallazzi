@@ -51,6 +51,8 @@
 		public static $ACTION_NEW_CATEGORIA = "new_categoria";
 		public static $ACTION_EDIT_CATEGORIA = "edit_categoria";
 		public static $ACTION_BAJA_CATEGORIA_BY_AJAX = "baja_categoria_by_ajax";
+		public static $ACTION_LIST_ALL_COMPRAS = "list_all_compras";
+		public static $ACTION_LIST_ALL_COMPRAS_BY_AJAX = "list_all_compras_by_ajax";
 		
 
 		/* Clasificación de ID'S */

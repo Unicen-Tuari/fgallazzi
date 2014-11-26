@@ -30,6 +30,16 @@
 			$this->setParams($params);
 			return $this->read($this->carritoModalTpl);
 		}
+
+		/**
+		 * FUNCIONES ADMIN
+		 * */
+		private $listAllComprasTpl = "list_all_compras.tpl";
+
+		public function listAllCompras(){
+			$this->set('title','Compras : Trastos');
+			$this->render($this->listAllComprasTpl);
+		}
 	}
 
 
