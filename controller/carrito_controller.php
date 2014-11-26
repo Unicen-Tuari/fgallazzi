@@ -151,16 +151,24 @@
 				$productoModel = new ProductoModel();
 				$mailsView = new MailsView();
 				
-				// cliente listado con todos los productos
-				$mensaje = $mailsView->listadoProductos($productosXC);
+				// para comprador 
+				$mensaje = $mailsView->listadoProductos(array('productos'=>$productosXC),'Detalle de compra');
 				$destino = 'franciscogallazzi@gmail.com';
 				$nombre = 'Francisco Gallazzi';
-				$subject = 'Pedido de compra';
+				$subject = 'Detalle de compra';
 				$mail->send($destino,$nombre,$subject,$mensaje);
 				
-				// vendedor
+				// para vendedor
+				$u = new UsuarioModel();
+				$user = $u->getById($id_usuario);
 
-				// admin
+				$mensaje = $mailsView->listadoProductos(array('productos'=>$productosXC, 'cliente' => $user[0]),'Detalle de venta',false);
+				$destino = 'franciscogallazzi@gmail.com';
+				$nombre = 'Francisco Gallazzi';
+				$subject = 'Detalle de venta';
+				$mail->send($destino,$nombre,$subject,$mensaje);
+
+				
 				
 
 				return $this->view->success(true);
