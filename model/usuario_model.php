@@ -28,6 +28,8 @@
 		
 		private $sql_listAllUsuarios = "SELECT * from usuario ";
 
+		private $sql_nombreUsuarioDisponible = "SELECT count(1) as count FROM usuario WHERE v_email = :v_email ";
+
 		public function getTabla(){
 			return $this->tabla;
 		}
@@ -52,6 +54,13 @@
 
 		public function getByUsuarioPass($params){
 			return $this->query($this->sql_getByUsuarioPass,$params);
+		}
+
+		public function nombreUsuarioDisponible($v_email){
+			$param = array(':v_email'=>$v_email);
+			$r =  $this->query($this->sql_nombreUsuarioDisponible,$param);
+			return (isset($r[0]['count']) && $r[0]['count'] == 0 ) ? true : false;
+			
 		}
 
 		/**

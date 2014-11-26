@@ -131,6 +131,11 @@
 				}
 				
 
+				// verificar que el nombre de usuario este disponible
+				if (!$this->model->nombreUsuarioDisponible($email)){
+					return $this->view->json(array('success'=> false, 'info' => 'Nombre de usuario no disponible, por favor indique uno diferente'));
+				}
+
 				$params =array(
 					':v_nombre' => $nombre,
 					':v_apellido' => $apellido,

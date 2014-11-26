@@ -14,6 +14,10 @@ $(document).ready(function() {
 					SHOW_ERRORS.show('#form_nuevo_usuario',data.errorMsj);
 
 				}
+				if ('info' in data){
+					$('#modal-nuevo-usuario').modal('hide');
+					DIALOG.show(data.info);
+				}
 			}
 		},
 		beforeSubmit : function(){
