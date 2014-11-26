@@ -53,6 +53,7 @@
 		public static $ACTION_BAJA_CATEGORIA_BY_AJAX = "baja_categoria_by_ajax";
 		public static $ACTION_LIST_ALL_COMPRAS = "list_all_compras";
 		public static $ACTION_LIST_ALL_COMPRAS_BY_AJAX = "list_all_compras_by_ajax";
+		public static $ACTION_FORM_CONTACTO = "form_contacto";
 		
 
 		/* Clasificación de ID'S */

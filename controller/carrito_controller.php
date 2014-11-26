@@ -144,7 +144,7 @@
 					return $this->view->json($json);
 				}
 				// confirmar la compra en la base
-				//$this->model->confirmarCarrito($id_carrito,$id_usuario);
+				$this->model->confirmarCarrito($id_carrito,$id_usuario);
 
 				//enviar mails
 				$mail = new MailController();

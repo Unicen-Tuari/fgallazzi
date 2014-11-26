@@ -177,6 +177,10 @@
 				$carritoController = new CarritoController();
 				$carritoController->listAllComprasByAjax();
 				break;
+			case ConfigApp::$ACTION_FORM_CONTACTO:
+				$usuarioController = new UsuarioController();
+				$usuarioController->formContacto();
+				break;
 			default:
 				echo "Pagina no encontrada";
 				break;

@@ -129,7 +129,8 @@
 				array ('action' => ConfigApp::$ACTION_EDIT_CATEGORIA,'gNL' => 0, 'gL' => 0, 'gA' => 1),
 				array ('action' => ConfigApp::$ACTION_BAJA_CATEGORIA_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
 				array ('action' => ConfigApp::$ACTION_LIST_ALL_COMPRAS,'gNL' => 0, 'gL' => 0, 'gA' => 1),
-				array ('action' => ConfigApp::$ACTION_LIST_ALL_COMPRAS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1)
+				array ('action' => ConfigApp::$ACTION_LIST_ALL_COMPRAS_BY_AJAX,'gNL' => 0, 'gL' => 0, 'gA' => 1),
+				array ('action' => ConfigApp::$ACTION_FORM_CONTACTO,'gNL' => 1, 'gL' => 0, 'gA' => 0)
 				
 			);
 

@@ -18,6 +18,7 @@
 		private $loginModalTpl = "login_modal.tpl";
 		private $formNuevoUsuarioTpl = "nuevo_usuario_modal.tpl";
 		private $formLoginTpl = "form_login.tlp";
+		private $formContactoTpl = "form_contacto.tpl";
 
 		
 		/**
@@ -37,6 +38,12 @@
 		public function formLogin(){
 			return $this->render($this->formLoginTpl);
 		}
+
+		public function formContacto(){
+			$this->set('title', 'Contacto : Trastos');
+			$this->render($this->formContactoTpl);
+		}
+
 
 		/**
 		 * FUNCIONES ADMIN

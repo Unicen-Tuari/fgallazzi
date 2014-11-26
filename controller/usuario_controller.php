@@ -1,5 +1,6 @@
 <?php 
 	include_once "controller_class.php";
+	include_once "mail_controller.php";
 	include_once "view/usuario_view.php";
 	include_once "model/usuario_model.php";
 	include_once "validar_class.php";
@@ -158,6 +159,25 @@
 
 		public function formLogin(){
 			$this->view->formLogin();
+		}
+
+		public function formContacto(){
+			if ($this->isGet() && !$this->isAjax()) {
+				return $this->view->formContacto();
+			}else if ($this->isPost() && $this->isAjax() && $this->getDataRequest('Contacto') !== false){
+				$contacto = $this->getDataRequest('Contacto');
+				$mail = new MailController();
+				$de = $contacto['email'];
+				$n = $contacto['nombre'] .' '. $contacto['apellido'];
+				$mensaje = $contacto['comentario'] . '<br> Email: ' . $de . '<br> Nombre:  ' . $n;
+				$envio = $mail->send('franciscogallazzi@gmail.com',
+							'Admin',
+							'Contacto',
+							 $mensaje);
+				return $this->view->success($envio);
+			}
+			return $this->view->success(false);
+			
 		}
 
 		/**
