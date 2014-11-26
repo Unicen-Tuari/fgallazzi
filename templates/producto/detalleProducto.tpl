@@ -90,7 +90,7 @@
 					</tr>
 				</tbody>
 			</table>
-			{include file = "carrusel.tpl"}
+			
 
 		</div>
 	</div>

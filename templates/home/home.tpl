@@ -7,7 +7,7 @@
 {include file = "jumbotron.tpl"}
 
 <div class="container">
-	Contenido	
+		
 </div>
 
 {include file = "listado_categorias.tpl" allCategorias = $allCategorias}
